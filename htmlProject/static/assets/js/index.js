@@ -117,7 +117,6 @@ $(function () {
                 reconnect() //重连
             }
         }
-
         createWebSocket();
     }
 
