@@ -1,51 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/page/index'
-import detail from '@/page/detail'
-import channelManage from '@/page/channelManage'
-import search from '@/page/search'
-import searchDetail from '@/page/searchDetail'
-import collection from '@/page/collection'
-import collectDetail from '@/page/collectDetail'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
-      component: index
+      redirect: 'index',
     },
     {
-      path: '/detail',
-      name: 'detail',
-      component: detail
+      path: '/index',
+      name: 'index',
+      component: resolve => require.ensure([], () => resolve(require('@/page/index')), 'index')
     },
     {
-      path: '/collectDetail',
-      name: 'collectDetail',
-      component: collectDetail
+      path: '/FAQ',
+      name: 'FAQ',
+      component: resolve => require.ensure([], () => resolve(require('@/page/FAQ')), 'FAQ')
     },
     {
-      path: '/channelManage',
-      component: channelManage
+      path: '/aboutUs',
+      name: 'about',
+      component: resolve => require.ensure([], () => resolve(require('@/page/aboutUs')), 'aboutUs')
     },
     {
-      path: '/search',
-      component: search
-    },
-    {
-      path: '/searchDetail',
-      name: 'searchDetail',
-      component: searchDetail
-    },
-    {
-      path: '/collection',
-      component: collection
+      path: '/contactWe',
+      name: 'contact',
+      component: resolve => require.ensure([], () => resolve(require('@/page/contactUs')), 'contactUs')
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
+  scrollBehavior(to, from, savedPosition) {
+    return {x: 0, y: 0}
   }
 })

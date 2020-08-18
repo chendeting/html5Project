@@ -1,28 +1,16 @@
 <template>
   <div>
-    <my v-show="showMy"></my>
-    <v-header class="pos-header"></v-header>
-    <v-nav></v-nav>
+    <div class="newsContent">
+      <carousel></carousel>
+    </div>
   </div>
 </template>
 
 <script>
-import vHeader from '@/components/vHeader'
-import vNav from '@/components/vNav'
-import my from '@/components/my'
+import carousel from '@/components/carousel'
 export default {
-  created() {
-    this.$store.commit('muShowMy', false)
-  },
   components: {
-    vHeader,
-    vNav,
-    my
-  },
-  computed: {
-    showMy() {
-      return this.$store.state.showMy
-    }
+    carousel
   }
 }
 </script>

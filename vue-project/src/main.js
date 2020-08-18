@@ -1,12 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import ElementUI from 'element-ui'
 import App from './App'
 import router from './router'
 import axios from 'axios'
 import Vuex from 'vuex'
+import './assets/css/common.css'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(Vuex)
+Vue.use(ElementUI)
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
@@ -17,10 +21,7 @@ const store = new Vuex.Store({
     channelIndex: 0,
     channelData: '',
     newDataIndex: '',
-    isActive: 0,
     load: true,
-    showMy: false,
-    showLogin: false,
     collection: [],
     likeImg: require("./assets/like.png")
   },
@@ -46,15 +47,12 @@ const store = new Vuex.Store({
     loading(state, statu) {
       state.load = statu
     },
-    muIsActive(state, index) {
-      state.isActive = index
-    },
-    muShowMy(state, statu) {
-      state.showMy = statu
-    },
-    muShowLogin(state, statu) {
-      state.showLogin = statu
-    },
+    // muShowMy(state, statu) {
+    //   state.showMy = statu
+    // },
+    // muShowLogin(state, statu) {
+    //   state.showLogin = statu
+    // },
     muCollect(state, data) {
       state.collection.push(data)
       // state.collection.reverse()

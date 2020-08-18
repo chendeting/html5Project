@@ -1,7 +1,11 @@
 <template lang="html">
     <div class="header">
-        <img src="../assets/identify.png" @click="clickIcon">
-        <div class="time-box ft_12">{{year}}{{time}}</div>
+        <img src="../assets/identify.png">
+        <div class="flex-row ft_14">
+            <span>{{year}}</span>
+            <span>/</span>
+            <span>{{time}}</span>
+        </div>
     </div>
 </template>
 
@@ -18,17 +22,8 @@
     mounted() {
       this.year = formatDate(new Date(), 'yyyy-MM-dd')
       this.time = formatDate(new Date(), 'hh:mm')
-      console.log('candy--打印:', formatDate(new Date(), 'hh:mm'))
-
     },
     methods: {
-      toSearch() {
-        this.$router.push('/search')
-      },
-      clickIcon() {
-        this.$store.state.showMy = true
-        this.$store.state.showLogin = true
-      }
     }
   }
 </script>
@@ -52,8 +47,5 @@
         width: .67rem;
         height: .67rem;
         padding: .4rem;
-    }
-    .time-box {
-        font-size: .26rem;
     }
 </style>

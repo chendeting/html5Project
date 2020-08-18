@@ -1,7 +1,9 @@
 <template lang="html">
   <div class="carousel">
       <transition-group tag="ul" name="image" class="clearfix">
-        <li v-for="(item, index) in slides" :key="index" v-show="index===nowIndex">
+        <li v-for="(item, index) in slides"
+            :key="index"
+            v-show="index===nowIndex">
           <img :src="item.src">
         </li>
       </transition-group>
@@ -43,9 +45,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.carousel {
-  margin-bottom: 5.6rem;
-}
 .carousel, ul, li {
   width: 100%;
 }

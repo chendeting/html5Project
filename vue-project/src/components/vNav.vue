@@ -1,22 +1,12 @@
 <template>
-  <div>
-    <div class="nav-content">
-      <div class="nav">
-        <div class="channel">
-          <ul>
-            <li v-for="(channel, index) in channels"
-                :class="{ active : isActive === index }"
-                @click="clickChannel(channel,index)">{{channel}}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="newsContent">
-        <div v-show="isLoading" class="loading">
-          <img src="../assets/loading.png">
-        </div>
-        <carousel v-show="this.$store.state.channelIndex === 0"></carousel>
-      </div>
+  <div class="nav">
+    <div class="channel">
+      <ul>
+        <li v-for="(channel, index) in channelsList"
+            :class="{ active : $route.path.indexOf(channel.path) >= 0}"
+            @click="clickChannel(channel,index)">{{channel.label}}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -28,52 +18,43 @@
     components: {
       carousel
     },
-    created() {
-      this.$store.dispatch('acChannels')
-      this.$store.dispatch('acGetData', '首页')
-      this.$store.commit('loading', true)
+    data() {
+      return {
+        isActive: 0,
+        isLoading: false,
+        channelsList: [{name: 'index', path: '/index', label: '首页'},
+          {name: 'FAQ', path: '/FAQ', label: 'FAQ'},
+          {name: 'about', path: '/aboutUs', label: '關於我們'},
+          {name: 'contact', path: '/contactWe', label: '聯繫我們'}]
+      }
     },
     computed: {
-      channels() {
-        return this.$store.state.channels
-      },
-      isLoading() {
-        return this.$store.state.load
-      },
-      isActive() {
-        return this.$store.state.isActive
-      }
+      // isLoading() {
+      //   return this.$store.state.load
+      // }
+    },
+    mounted() {
+      console.log('candy--打印:', this.$router)
     },
     methods: {
       clickChannel(channel, index) {
-        this.$store.state.channelData = ''
-        scrollTo(0, 0)
-        this.$store.state.load = true
         this.isActive = index
-        this.$store.commit('muChannelIndex', index)
-        this.$store.commit('muIsActive', index)
-        this.$store.dispatch('acGetData', this.$store.state.channels[this.$store.state.channelIndex])
+        this.$router.push({path: channel.path})
+        // scrollTo(0, 0)
       }
     }
   }
 </script>
 
 <style lang="css" scoped>
-  .nav-content {
-    margin-top: 1.2rem;
-  }
-
   .nav {
     width: 100%;
     height: .96rem;
     background-color: #f4f5f6;
     display: flex;
-    position: fixed;
-    z-index: 99;
   }
 
   .channel {
-    display: inline-block;
     flex: 1;
     white-space: nowrap;
     display: flex;
@@ -87,21 +68,6 @@
     height: 0;
   }
 
-  .addChannel {
-    display: inline-block;
-    width: 10%;
-    height: 100%;
-    border-left: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .addChannel img {
-    width: .53rem;
-    height: .53rem;
-  }
-
   .channel ul li {
     display: inline-block;
     margin-left: .32rem;
@@ -109,83 +75,6 @@
   }
 
   .active {
-    color: red;
-  }
-
-  .newsContent {
-    padding-top: 0.96rem;
-  }
-
-  .loading {
-    position: absolute;
-    top: 2.16rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    background-color: #fff;
-    z-index: 99;
-  }
-
-  .loading img {
-    margin-top: 30px;
-    width: 50px;
-    height: 50px;
-    animation: loading .6s linear infinite
-  }
-
-  @keyframes loading {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-  .section {
-    width: 100%;
-    height: 2.5rem;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .news {
-    height: 2.25rem;
-    box-sizing: border-box;
-    margin: 10px 10px;
-    display: flex;
-  }
-
-  .news-left {
-    height: 100%;
-    width: 2.8rem;
-    display: inline-block;
-  }
-
-  .news-left img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .news-right {
-    flex: 1;
-    padding-left: 10px;
-  }
-
-  .newsTitle {
-    width: 100%;
-    height: 62%;
-    color: #404040;
-    font-size: 18px;
-    overflow: hidden;
-  }
-
-  .newsMessage {
-    width: 100%;
-    height: 38%;
-    display: flex;
-    align-items: flex-end;
-    color: #888;
-    justify-content: space-between;
+    color: #d43d3d;
   }
 </style>

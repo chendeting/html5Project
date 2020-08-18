@@ -1,34 +1,6 @@
 <template lang="html">
   <div>
-    <div class="search-header">
-      <div class="header">
-        <img src="../assets/back.png" @click="goback">
-        <span>搜索</span>
-        <span>隐藏</span>
-      </div>
-      <div class="search">
-        <input type="text" placeholder="请输入搜索内容" v-model="keywords" @keyup.enter="toSearch(keywords)">
-      </div>
-    </div>
-    <div class="news-content">
-      <div v-show="isLoading" class="loading">
-        <img src="../assets/loading.png">
-      </div>
-      <div class="section" v-for="(item, index) in result">
-        <div class="news" @click="toSearchDetail(item)">
-          <div class="news-left">
-            <img :src="item.pic[0] || require('../assets/tongyong.jpg')" alt="">
-          </div>
-          <div class="news-right">
-            <div class="newsTitle">{{item.title}}</div>
-            <div class="newsMessage">
-              <span>{{item.time}}</span>
-              <span>{{item.src}}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    联系我们
   </div>
 </template>
 
@@ -42,25 +14,6 @@ export default {
     }
   },
   methods: {
-    toSearch(keywords) {
-      if(keywords !== '') {
-        this.isLoading = true
-        this.result = ''
-        if(keywords.trim()) {
-          this.$http.get('/api/search/' + keywords)
-            .then(res => {
-              this.result = res.data.result.list
-              this.isLoading = false
-          })
-        }
-      }
-    },
-    goback() {
-      this.$router.back(-1)
-    },
-    toSearchDetail(item) {
-      this.$router.push({name: 'searchDetail', params: { item : item }})
-    }
   }
 }
 </script>

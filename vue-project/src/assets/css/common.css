@@ -8,7 +8,7 @@ a {
 }
 
 .flex-row {
-.flex;
+    display: flex;
     flex-direction: row;
 }
 
@@ -21,8 +21,8 @@ a {
 }
 
 .center {
-.align-center;
-.justify-center;
+    align-items: center;
+    justify-content: center;
 }
 
 .justify-between {
@@ -66,13 +66,15 @@ a {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.text-overflow-multi{
-    overflow : hidden;
+
+.text-overflow-multi {
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
 .text-center {
     text-align: center;
 }
@@ -80,9 +82,11 @@ a {
 .ft_12 {
     font-size: .222rem;
 }
+
 .ft_14 {
     font-size: .26rem;
 }
+
 .ft_16 {
     font-size: .296rem;
 }

@@ -1,19 +1,8 @@
 <template lang="html">
   <div class="detail">
-    <div class="header">
-      <img src="../assets/back.png" @click="goback">
-      <span>收藏新闻</span>
-    </div>
     <div class="content">
       <div class="container">
-        <!-- <div class="title">{{$route.params.item.title}}</div> 给路由传参的写法 -->
-        <div class="title">{{$route.params.item && $route.params.item.title}}</div>
-        <div class="message">
-          <span>{{$route.params.item && $route.params.item.time || '2017-06-07 12:00'}}</span>
-          <span>{{$route.params.item && $route.params.item.src || '爱新闻'}}</span>
-        </div>
         <img :src="$route.params.item && $route.params.item.pic || require('../assets/tongyong.jpg')">
-        <div class="newsContent" v-html="$route.params.item && $route.params.item.content"></div>
       </div>
     </div>
   </div>
@@ -22,9 +11,7 @@
 <script>
 export default {
   methods: {
-    goback() {
-      this.$router.back(1)
-    }
+
   }
 }
 </script>
