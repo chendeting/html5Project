@@ -68,7 +68,13 @@ const store = new Vuex.Store({
   },
   actions: {
     acChannels({ commit,state }) {
-      commit('muChannels', ['首页', 'FAQ', '關於我們', '聯繫我們'])
+      return new Promise((resolve, reject) => {
+        axios.get('/api/channel')
+          .then(res => {
+            commit('muChannels', res.data.result)
+          })
+          resolve()
+      })
     },
     acGetData({ commit,state }, channel) {
       return new Promise((resolve, reject) => {

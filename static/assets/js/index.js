@@ -6,14 +6,16 @@
  */
 /*页面url以及端口号配置*/
 
-// var _pageUri = 'https://www.zkao46.com';
-var _pageUri = 'http://132.232.222.50:8686';
-// var _wsUri = 'wss://www.zkao46.com';
-var _wsUri = 'ws://132.232.222.50:8686';
+var _pageUri = 'https://www.zkao46.com';
+//var _pageUri = 'http://132.232.222.50:8686';
+var _wsUri = 'wss://www.zkao46.com:8901/websocket';
+//var _wsUri = 'ws://132.232.222.50:8686/web2/ws';
+
 
 
 var loading = true;
 var timer = null;
+var timeInterval = null;
 var ws = null;
 
 
@@ -26,26 +28,33 @@ $(function () {
         var timerSocketRe = null;
         var reconnectNum = 0;
         var timeout = 30000; //超时重连间隔
-        var Max = 15; //重连次数
+        var Max = 250; //重连次数
+
+        clearInterval(timerSocketRe);
+        clearInterval(timeoutSet);
 
         var heartCheck = {
-            timeout: 60000,  //  心跳检测时长
+            timeout:5000,  //  心跳检测时长
             timeoutObj: null, // 定时变量
             serverTimeoutObj: null,
             reset: function () { // 重置定时
-                clearTimeout(this.timeoutObj);
-                clearTimeout(this.serverTimeoutObj);
+                console.log("reset HeartBeat");
+                clearInterval(this.timeoutObj);
+                clearInterval(this.serverTimeoutObj);
                 return this;
             },
             start: function () { // 开启定时
                 var self = this;
                 var count = 0;
+                console.log("HeartBeat==start", ws);
                 // 心跳时间内收不到消息，主动触发连接关闭，开始重连
-                self.timeoutObj = setTimeout(function () {
+                self.timeoutObj = setInterval(function () {
                     if (count < Max) {
                         ws.send("HeartBeat");
                         count++;
+                        console.log("HeartBeat-if", count)
                     } else {
+                        console.log("else HeartBeat")
                         clearInterval(this.timeoutObj);
                         count = 0;
                         ws.close();
@@ -74,51 +83,57 @@ $(function () {
         // 实例websocket
         function createWebSocket() {
             try {
-                console.info(`创建11`)
+                console.info(`创建createWebSocket`);
                 timeoutSet = setTimeout(() => {
                     if (timeoutFlag && reconnectNum < Max) {
-                        console.info(`重连22`);
+                        console.info(`重连createWebSocket`);
                         reconnectNum++;
                         createWebSocket();
                     }
                 }, timeout);
                 if ('WebSocket' in window) {
-                    ws = new WebSocket(_wsUri + "/web2/ws");
+                    ws = new WebSocket(_wsUri );
                 } else if ('MozWebSocket' in window) {
-                    ws = new MozWebSocket(_wsUri + "/web2/ws");
+                    ws = new MozWebSocket(_wsUri);
                 } else {
                     alert("当前浏览器不支持websocket协议,建议使用现代浏览器")
                 }
                 initEventHandle();
             } catch (e) {
-                reconnect(_wsUri + "/web2/ws");
+                reconnect(_wsUri);
             }
         }
 
         function initEventHandle() {
             ws.onopen = function () {
-                heartCheck.reset().start();
+                console.log("ws==open");
+                heartCheck.reset();
+                heartCheck.start();
                 clearTimeout(timeoutSet);
                 reconnectNum = 0;
                 timeoutFlag = false;
             };
             ws.onmessage = function (evt) {
-                heartCheck.reset().start();
-                // 收到心跳检测消息，后端回复的消息为service_response_heart
+                console.log("ws==onmessage", evt.data);
+                heartCheck.reset();
+                heartCheck.start();
                 if (evt.data === 'service_response_heart') return;
                 setMessageInnerHTML(evt.data);
             };
             ws.onclose = function (e) {
-                console.info(`关闭11`, e.code);
+                console.info(`关闭ws`, e.code);
                 clearTimeout(timeoutSet);
                 timeoutFlag = false;
                 reconnect();
             };
             ws.onerror = function () {
-                console.info(`错误11`);
+                console.info(`错误ws`);
+                clearTimeout(timeoutSet);
+                timeoutFlag = false;
                 reconnect() //重连
             }
         }
+
         createWebSocket();
     }
 
@@ -137,6 +152,7 @@ $(function () {
     function diffTime() {
         if (document.hidden) {
             closeWebSocket();
+            window.clearInterval(timeInterval);
         } else {
             longSock();
         }
@@ -159,8 +175,6 @@ $(function () {
     }
 
     function setTimer(intDiff) {
-        var timeInterval = null;
-        // if (intDiff) {
         window.clearInterval(timeInterval);
         timeInterval = window.setInterval(function () {
             var day = 0,
@@ -189,7 +203,6 @@ $(function () {
                 window.clearInterval(timeInterval);
             }
         }, 1000);
-        // }
     }
 
     function renderLongImg() {
@@ -237,7 +250,6 @@ $(function () {
     function getTwoData(res) {
         $('#twoWebSocket').html('');
         var data = res ? $.parseJSON(String(res)) : null;
-
         if (data) {
             var twohtml = '';
             var t1 = '';

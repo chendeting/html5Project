@@ -94,6 +94,7 @@ table {
     height: 0;
 }
 
+
 .clear, .clearfix {
     display: inline-block;
 }
@@ -381,16 +382,17 @@ body {
 
 .two-t1 {
     padding: 0 .4rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .two-t2 {
-    font-size: 1rem;
+    font-size: .8rem;
 }
 
 .two-t3 {
     padding: .4rem;
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .two-content-lists {
@@ -440,13 +442,13 @@ body {
     font-size: .7rem;
 }
 
-.modalBtn {
+.modalBtn {/*开奖历史*/
     position: absolute;
     bottom: .6rem;
     right: .4rem;
     cursor: pointer;
     color: #e11313;
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .three-title {
@@ -625,29 +627,29 @@ body {
 
 .time-box {
     position: absolute;
-    right: .6rem;
-    top: .7rem;
+    right: .3rem;
+    top: .5rem;
 }
 
-.time-box .text {
-    font-size: .9rem;
+.time-box .text {/*倒计时*/
+    font-size: .8rem;
 }
 
 #hour_show,
 #minute_show,
 #second_show {
-    font-size: .9rem;
+    font-size: .8rem;
     display: inline-block;
 
 }
 
 #hour_show,
 #minute_show {
-    width: 1.4rem;
+    width: 1rem;
 }
 
 #second_show {
-    width: 1.2rem;
+    width: 1rem;
 }
 
 .eight-list:last-child a {

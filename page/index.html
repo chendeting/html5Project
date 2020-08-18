@@ -8,14 +8,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link rel="stylesheet" href="./../static/assets/third/bootstrap-4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
     <link rel="stylesheet" href="../static/assets/css/style-version-9.css">
 
 </head>
 <body>
 <div class="container section-content">
     <div class="content-box one-content" id="oneBox">
-        <img class="top-img" alt="头部背景图"/>
+        <img class="top-img" alt=""/>
     </div>
 
     <!--消息通知区start-->
@@ -30,7 +32,7 @@
             <span id="minute_show"></span>
             <span id="second_show"></span>
         </div><!--倒计时模块-->
-        <div class="modalBtn" data-toggle="modal" data-target="#myModal">查看开奖历史</div>
+        <div class="modalBtn" data-toggle="modal" data-target="#myModal">开奖历史</div>
         <div id="twoWebSocket"></div>
     </div>
     <!--二区、倒计时、开奖历史end-->
@@ -82,7 +84,7 @@
     <div class="content-box">
         <div class="mt-40 section flex">
             <div class="flex-fill flex-shrink-0" id="imgBox2"></div>
-            <div class="flex-fill flex-shrink-0" id="imgBox3"></div>
+            <!--<div class="flex-fill flex-shrink-0" id="imgBox3"></div>-->
         </div>
     </div>
     <!--图片区2、3end-->
@@ -103,20 +105,27 @@
     <!--※家野原创※end-->
 
 
-    <!--图片区4、5、6start-->
+    <!--图片区3,4start-->
+    <div class="content-box">
+        <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
+    </div>
+    <div class="content-box">
+        <div class="mt-40 section">
+            <div id="imgBox3"></div>
+
+        </div>
+    </div>
+
     <div class="content-box">
         <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
     </div>
     <div class="content-box">
         <div class="mt-40 section">
             <div id="imgBox4"></div>
-            <div class="flex">
-                <div class="flex-fill flex-shrink-0" id="imgBox5"></div>
-                <div class="flex-fill flex-shrink-0" id="imgBox6"></div>
-            </div>
+
         </div>
     </div>
-    <!--图片区4、5、6end-->
+    <!--图片区3,4end-->
 
     <!--※三期必中※star-->
     <div class="content-box">
@@ -138,7 +147,7 @@
         <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
     </div>
     <div class="content-box">
-        <div class="mt-40 section" id="imgBox7"></div>
+        <div class="mt-40 section" id="imgBox5"></div>
     </div>
     <!--图片区7end-->
 
@@ -164,17 +173,27 @@
     <!--※吉波报肖※end-->
 
 
-    <!--图片区8、9start-->
+    <!--图片区6、7start-->
     <div class="content-box">
         <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
     </div>
     <div class="content-box">
         <div class="mt-40 section flex">
-            <div class="flex-fill flex-shrink-0" id="imgBox8"></div>
-            <div class="flex-fill flex-shrink-0" id="imgBox9"></div>
+            <div class="flex-fill flex-shrink-0" id="imgBox6"></div>
+            <!--<div class="flex-fill flex-shrink-0" id="imgBox9"></div>-->
         </div>
     </div>
-    <!--图片区8、9end-->
+
+    <div class="content-box">
+        <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
+    </div>
+    <div class="content-box">
+        <div class="mt-40 section flex">
+            <!--<div class="flex-fill flex-shrink-0" id="imgBox8"></div>-->
+            <div class="flex-fill flex-shrink-0" id="imgBox7"></div>
+        </div>
+    </div>
+    <!--图片区6、7end-->
 
     <!--※精选三头※star-->
     <div class="content-box">
@@ -191,20 +210,26 @@
     <!--※稳中七尾※end-->
 
 
-    <!--图片区10、11、12start-->
+    <!--图片区8,9start-->
     <div class="content-box">
         <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
     </div>
     <div class="content-box">
         <div class="mt-40 section">
-            <div id="imgBox10"></div>
-            <div class="flex">
-                <div class="flex-fill flex-shrink-0" id="imgBox11"></div>
-                <div class="flex-fill flex-shrink-0" id="imgBox12"></div>
-            </div>
+            <div id="imgBox8"></div>
         </div>
     </div>
-    <!--图片区10、11、12end-->
+
+
+    <div class="content-box">
+    <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
+      </div>
+        <div class="content-box">
+          <div class="mt-40 section">
+             <div id="imgBox9"></div>
+     </div>
+    </div>
+    <!--图片区8,9end-->
 
     <!--※长跟必赢※star-->
     <div class="content-box">
@@ -220,15 +245,15 @@
     <!--预留区1、2end-->
 
 
-    <!--图片区13start-->
+    <!--图片区10start-->
     <div class="content-box">
         <div class="mt-40 section flex justify-content-center align-items-center longImg"></div>
     </div>
     <div class="content-box">
-        <div class="mt-40 section" id="imgBox13"></div>
+        <div class="mt-40 section" id="imgBox10"></div>
 
     </div>
-    <!--图片区13end-->
+    <!--图片区10end-->
 
 
     <!--※看图解码※star-->
