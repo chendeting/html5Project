@@ -6,8 +6,9 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import Vuex from 'vuex'
-import './assets/css/common.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import './assets/css/common.css'
+
 
 Vue.use(Vuex)
 Vue.use(ElementUI)
@@ -22,8 +23,7 @@ const store = new Vuex.Store({
     channelData: '',
     newDataIndex: '',
     load: true,
-    collection: [],
-    likeImg: require("./assets/like.png")
+    collection: []
   },
   mutations: {
     muChannels(state, data) {

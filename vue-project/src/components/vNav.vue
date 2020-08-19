@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="channel">
-      <ul>
+      <ul class="module">
         <li v-for="(channel, index) in channelsList"
             :class="{ active : $route.path.indexOf(channel.path) >= 0}"
             @click="clickChannel(channel,index)">{{channel.label}}
@@ -29,18 +29,14 @@
       }
     },
     computed: {
-      // isLoading() {
-      //   return this.$store.state.load
-      // }
     },
     mounted() {
-      console.log('candy--打印:', this.$router)
     },
     methods: {
       clickChannel(channel, index) {
         this.isActive = index
         this.$router.push({path: channel.path})
-        // scrollTo(0, 0)
+        scrollTo(0, 0)
       }
     }
   }
@@ -49,7 +45,7 @@
 <style lang="css" scoped>
   .nav {
     width: 100%;
-    height: .96rem;
+    height: 1.2rem;
     background-color: #f4f5f6;
     display: flex;
   }
@@ -60,7 +56,7 @@
     display: flex;
     align-items: center;
     overflow-x: scroll;
-    font-size: .45rem;
+    font-size: .5rem;
     color: #505050;
   }
 
@@ -70,11 +66,12 @@
 
   .channel ul li {
     display: inline-block;
-    margin-left: .32rem;
-    margin-right: .32rem;
+    line-height: 1.2rem;
+    padding: 0 .3rem;
   }
 
   .active {
-    color: #d43d3d;
+    color: #fff;
+    background: #d43d3d;
   }
 </style>

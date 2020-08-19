@@ -2,13 +2,15 @@
   <div class="carousel">
       <transition-group tag="ul" name="image" class="clearfix">
         <li v-for="(item, index) in slides"
-            :key="index"
+            :key="'image' + index"
             v-show="index===nowIndex">
           <img :src="item.src">
         </li>
       </transition-group>
       <div class="bullet">
-        <span v-for="(item,index) in slides.length" :class="{active:index===nowIndex}"></span>
+        <span v-for="(item,index) in slides.length"
+              :key="'bullet' + index"
+              :class="{active:index===nowIndex}"></span>
       </div>
     </div>
 </template>

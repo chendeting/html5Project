@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="header">
-        <img src="../assets/identify.png">
-        <div class="flex-row ft_14">
+        <img src="../assets/images/logo.png">
+        <div class="flex-row ft_18">
             <span>{{year}}</span>
             <span>/</span>
             <span>{{time}}</span>
@@ -32,15 +32,17 @@
     .header {
         width: 100%;
         height: 1.2rem;
-        background-color: #d43d3d;
+        /*background-color: #d43d3d;*/
+        background-color: #f7f7f7;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #fff;
+        /*color: #fff;*/
         font-size: 20px;
         font-weight: 700;
         letter-spacing: 3px;
         z-index: 99;
+        border-bottom: 1px solid #e3e3e3;
     }
 
     img {
