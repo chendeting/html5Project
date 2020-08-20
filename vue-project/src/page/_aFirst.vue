@@ -1,7 +1,7 @@
 <template>
   <div class="about-container about-first">
     <div class="about-intro">
-      <div class="title ft_24 text-center">關於我們</div>
+      <div class="title ft_24 text-center">關於我們{{widthFlag}}</div>
       <div class="content">
         <p>澳門六合彩是從1至49個號碼中選出六個為中獎號碼的獎券，由香港賽馬會的附屬公司「香港馬會獎券澳門分公司」經辦 。</p>
         <p>澳門六合彩每晚攪珠一次，並於網絡現場直播。</p>
@@ -18,6 +18,7 @@
         <p>獎項詳情如下：</p>
       </div>
       <el-table
+        v-if="tableData && tableData.length > 0"
         :data="tableData"
         class="rules-table"
         border
@@ -31,7 +32,7 @@
         </el-table-column>
         <el-table-column
           label=""
-          width="120"
+          :width="widthFlag ? 400 : 120"
           align="center"
           prop="column2">
         </el-table-column>
@@ -50,48 +51,59 @@
     name: "AFirst",
     data() {
       return {
-        tableData: [{
-          column1: '頭獎',
-          column2: '選中6個「攪出號碼」',
-          column3: '獎金會因應該期獲中頭獎注數而有所不同，每期頭獎獎金基金訂為不少於澳門幣800萬元。'
-        },
-          {
-            column1: '二獎',
-            column2: '選中5個「攪出號碼」+「特別號碼」',
-            column3: '獎金會因應該期獲中二獎注數而有所不同'
-          },
-          {
-            column1: '三獎',
-            column2: '選中5個「攪出號碼」',
-            column3: '獎金會因應該期獲中三獎注數而有所不同'
-          },
-          {
-            column1: '四獎',
-            column2: '選中4個「攪出號碼」+「特別號碼」',
-            column3: '固定獎金澳門幣9,600元'
-          },
-          {
-            column1: '五獎',
-            column2: '選中4個「攪出號碼」',
-            column3: '固定獎金澳門幣640元'
-          },
-          {
-            column1: '六獎',
-            column2: '選中3個「攪出號碼」+「特別號碼」',
-            column3: '固定獎金澳門幣320元'
-          },
-          {
-            column1: '七獎',
-            column2: '選中3個「攪出號碼」',
-            column3: '固定獎金澳門幣40元'
-          }]
+        tableData: [],
+        widthFlag: false
       }
+    },
+    mounted() {
+      let _tableData = [{
+        column1: '頭獎',
+        column2: '選中6個「攪出號碼」',
+        column3: '獎金會因應該期獲中頭獎注數而有所不同，每期頭獎獎金基金訂為不少於澳門幣800萬元。'
+      },
+        {
+          column1: '二獎',
+          column2: '選中5個「攪出號碼」+「特別號碼」',
+          column3: '獎金會因應該期獲中二獎注數而有所不同'
+        },
+        {
+          column1: '三獎',
+          column2: '選中5個「攪出號碼」',
+          column3: '獎金會因應該期獲中三獎注數而有所不同'
+        },
+        {
+          column1: '四獎',
+          column2: '選中4個「攪出號碼」+「特別號碼」',
+          column3: '固定獎金澳門幣9,600元'
+        },
+        {
+          column1: '五獎',
+          column2: '選中4個「攪出號碼」',
+          column3: '固定獎金澳門幣640元'
+        },
+        {
+          column1: '六獎',
+          column2: '選中3個「攪出號碼」+「特別號碼」',
+          column3: '固定獎金澳門幣320元'
+        },
+        {
+          column1: '七獎',
+          column2: '選中3個「攪出號碼」',
+          column3: '固定獎金澳門幣40元'
+        }]
+      this.tableData = _tableData
+      window.addEventListener('resize', function () {
+        this.tableData = []
+        this.widthFlag = document.body.clientWidth >= 450
+        this.tableData = _tableData
+        console.log('candy--打印:document.body.clientWidth---', document.body.clientWidth, this.widthFlag)
+      })
     }
   }
 </script>
 
 <style scoped lang="css">
-  .about-first .about-intro{
+  .about-first .about-intro {
     padding: 0 .3rem;
   }
 
