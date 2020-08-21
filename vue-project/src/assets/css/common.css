@@ -120,8 +120,20 @@ a {
     font-size: .482rem;
 }
 
+.p-3 {
+    padding: .3rem;
+}
+
+.plr-3 {
+    padding: 0 .3rem ;
+}
+
 .mt-3 {
     margin-top: .3rem;
+}
+
+.mtb-3 {
+    margin: .3rem 0;
 }
 
 .mb-3 {
@@ -144,6 +156,10 @@ a {
     margin-right: .3rem;
 }
 
+.c_red {
+    color: #d80011;
+}
+
 .about-container .about-content {
     padding: 0 .3rem;
 }
@@ -152,13 +168,13 @@ a {
     margin: .25rem 0;
     color: #d80011;
     text-align: center;
-    font-size: .444rem;
+    font-size: .49rem;
 }
 
 .about-container .about-content .subtitle,
 .about-container .about-content .threeTitle,
 .about-container .about-content .fourTitle {
-    font-size: .4rem;
+    font-size: .45rem;
     font-weight: 500;
     margin: .25rem 0;
 }
@@ -168,7 +184,7 @@ a {
 }
 
 .about-container p {
-    font-size: .35rem;
+    font-size: .4rem;
     text-indent: .6rem;
     color: #343434;
 }

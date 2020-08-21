@@ -31,23 +31,25 @@
 <style lang="css" scoped>
     .header {
         width: 100%;
-        height: 1.2rem;
-        /*background-color: #d43d3d;*/
-        background-color: #f7f7f7;
+        height: 1.8rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        /*color: #fff;*/
         font-size: 20px;
         font-weight: 700;
         letter-spacing: 3px;
-        z-index: 99;
-        border-bottom: 1px solid #e3e3e3;
+        /*position: fixed;*/
+        /*z-index: 100;*/
+        /*left: 0;*/
+        /*top: 0;*/
+        background: -webkit-gradient(linear,left top,left bottom,from(#fff),color-stop(60%,#fefefe),color-stop(90%,#f0f0f0),to(#fff));
+        background: linear-gradient(180deg,#fff,#fefefe 60%,#f0f0f0 90%,#fff);
+        border-bottom: 1px solid #c4c4c4;
     }
 
     img {
-        width: .67rem;
-        height: .67rem;
+        width: 1.9rem;
+        /*height: .67rem;*/
         padding: .4rem;
     }
 </style>

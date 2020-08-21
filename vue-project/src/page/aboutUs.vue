@@ -24,7 +24,7 @@
     components: {AThree, ASecond, AFirst},
     data() {
       return {
-        activeName: 'second'
+        activeName: 'first'
       };
     }
   };

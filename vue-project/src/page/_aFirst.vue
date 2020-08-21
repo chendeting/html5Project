@@ -1,7 +1,7 @@
 <template>
   <div class="about-container about-first">
     <div class="about-intro">
-      <div class="title ft_24 text-center">關於我們{{widthFlag}}</div>
+      <div class="title ft_24 text-center c_red">關於我們</div>
       <div class="content">
         <p>澳門六合彩是從1至49個號碼中選出六個為中獎號碼的獎券，由香港賽馬會的附屬公司「香港馬會獎券澳門分公司」經辦 。</p>
         <p>澳門六合彩每晚攪珠一次，並於網絡現場直播。</p>

@@ -48,6 +48,7 @@
     height: 1.2rem;
     background-color: #f4f5f6;
     display: flex;
+    /*margin-top: 1.8rem;*/
   }
 
   .channel {
