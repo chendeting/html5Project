@@ -4,7 +4,7 @@
       <carousel></carousel>
     </div>
     <div class="plr-3">
-      <div class="flex-row timer-box mtb-3">
+      <div class="flex-row timer-box mtb-3 align-center">
         <span class="text">倒计时：</span>
         <span class="time-text" v-text="hour+'：'"></span>
         <span class="time-text" v-text="minute+'：'"></span>
@@ -71,20 +71,37 @@
 
       <el-table
         :data="tableData"
+        class="mtb-3 kaijiang-table"
+        stripe
         style="width: 100%">
         <el-table-column
           prop="date"
-          label="期號"
-          width="180">
+          label="期號/開獎時間"
+          width="120">
+          <template slot-scope="scope">
+            <div class="flex-column center">
+              <span>{{scope.row.name}}</span>
+              <span>{{scope.row.time1}}</span>
+              <span>{{scope.row.time2}}</span>
+            </div>
+          </template>
         </el-table-column>
-        <!--<el-table-column-->
-        <!--prop="name"-->
-        <!--label="開獎時間"-->
-        <!--width="180">-->
-        <!--</el-table-column>-->
         <el-table-column
           prop="address"
           label="中獎號碼">
+          <template slot-scope="scope">
+            <ul class="flex-row center table-lists">
+              <template v-for="(item, index) in scope.row.hmData">
+                <li v-if="index !== 5 " class="ball-item flex-column">
+                  <div class="flex flex-column justify-content-center align-items-center">
+                    <img :src="formatterImg(item.hm)" class="hm-img" alt="">
+                    <span class="first-text-t">{{item.sx}}</span>
+                  </div>
+                </li>
+                <li v-if="index === 5 " class="ball-add-item c_red">+</li>
+              </template>
+            </ul>
+          </template>
         </el-table-column>
       </el-table>
     </div>
@@ -143,7 +160,58 @@
           "hm": "02",
           "sx": "猪"
         }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
-        tableData: []
+        tableData: [{
+          hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
+            "color": "#1aad19",
+            "hm": "06",
+            "sx": "羊"
+          }, {"color": "#1aad19", "hm": "05", "sx": "猴"}, {
+            "color": "#0096ff",
+            "hm": "04",
+            "sx": "鸡"
+          }, {"color": "#0096ff", "hm": "03", "sx": "狗"}, {
+            "color": "#e11313",
+            "hm": "02",
+            "sx": "猪"
+          }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
+          name: '第2020227期',
+          time2: '21:36:04',
+          time1: '2020-08-23'
+        }, {
+          hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
+            "color": "#1aad19",
+            "hm": "06",
+            "sx": "羊"
+          }, {"color": "#1aad19", "hm": "05", "sx": "猴"}, {
+            "color": "#0096ff",
+            "hm": "04",
+            "sx": "鸡"
+          }, {"color": "#0096ff", "hm": "03", "sx": "狗"}, {
+            "color": "#e11313",
+            "hm": "02",
+            "sx": "猪"
+          }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
+          name: '第2020227期',
+          time1: '2020-08-23',
+          time2: '21:36:04'
+        }, {
+          hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
+            "color": "#1aad19",
+            "hm": "06",
+            "sx": "羊"
+          }, {"color": "#1aad19", "hm": "05", "sx": "猴"}, {
+            "color": "#0096ff",
+            "hm": "04",
+            "sx": "鸡"
+          }, {"color": "#0096ff", "hm": "03", "sx": "狗"}, {
+            "color": "#e11313",
+            "hm": "02",
+            "sx": "猪"
+          }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
+          name: '第2020227期',
+          time1: '2020-08-23',
+          time2: '21:36:04'
+        }]
       }
     },
     mounted() {
@@ -243,7 +311,7 @@
 
 <style lang="css" scoped>
   .timer-box {
-    font-size: .85rem;
+    font-size: .65rem;
     box-shadow: 0 1px 4px #c8c8c8;
     border: 1px solid #dadada;
     padding: .3rem;
@@ -252,6 +320,7 @@
   .timer-box .time-text {
     min-width: .6rem;
     font-weight: bold;
+    font-size: .85rem;
   }
 
   .vertical-line {
@@ -277,6 +346,15 @@
     padding: .3rem 0;
   }
 
+  .kaijiang-table {
+    box-shadow: 0 1px 4px #c8c8c8;
+    border: 1px solid #dadada;
+  }
+
+  .table-lists .ball-item {
+    padding: 0 .1rem;
+  }
+
   .ball-item {
     width: 14%;
     padding: 0 .2rem;
@@ -291,6 +369,8 @@
   .ball-add-item {
     width: .8rem;
     text-align: center;
+    font-weight: bold;
+    font-size: .5rem;
   }
 
   .ball-item .first-text-t {
