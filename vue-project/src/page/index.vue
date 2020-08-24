@@ -11,6 +11,11 @@ import carousel from '@/components/carousel'
 export default {
   components: {
     carousel
+  },
+  methods: {
+    contactWebsockt() {
+
+    }
   }
 }
 </script>

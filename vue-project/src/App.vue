@@ -38,7 +38,10 @@
     height: 100%;
     width: 100%;
   }
-
+  #app {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
   .loading {
     position: absolute;
     top: 2.16rem;

@@ -33,6 +33,7 @@
 <style lang="css" scoped>
   .aboutImg {
     width: 100%;
+    display: block;
   }
 
   /deep/ .about-us .el-tabs__item {
