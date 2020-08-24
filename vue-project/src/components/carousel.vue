@@ -24,17 +24,16 @@
       return {
         nowIndex: 0,
         slides: [
-          {src: require('../assets/jinzhengen.jpg')},
-          {src: require('../assets/qinliugan.jpg')},
-          {src: require('../assets/huanqiu.jpg')},
-          {src: require('../assets/aierlan.jpg')}
+          {src: require('../assets/images/banner1.jpg')},
+          {src: require('../assets/images/banner2.jpg')},
+          {src: require('../assets/images/banner3.jpg')}
         ]
       }
     },
     methods: {
       autoPlay() {
         this.nowIndex++
-        if (this.nowIndex === 4) {
+        if (this.nowIndex === this.slides.length) {
           this.nowIndex = 0
           return
         }

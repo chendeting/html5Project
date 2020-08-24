@@ -11,7 +11,7 @@ a {
     text-decoration: none;
 }
 
-.flex {
+.flex-column {
     display: flex;
     flex-direction: column;
 }
