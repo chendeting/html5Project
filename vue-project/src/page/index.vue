@@ -25,44 +25,44 @@
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[0].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[0].sx}}</span>
           </div>
         </li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[1].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[1].sx}}</span>
           </div>
         </li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[2].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[2].sx}}</span>
           </div>
         </li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[3].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[3].sx}}</span>
           </div>
         </li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[4].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[4].sx}}</span>
           </div>
         </li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[5].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[5].sx}}</span>
           </div>
         </li>
         <li class="ball-add-item c_red">+</li>
         <li class="ball-item">
-          <div class="flex flex-column justify-content-center align-items-center">
+          <div class="flex flex-column center">
             <img :src="formatterImg(hmData[6].hm)" class="hm-img" alt="">
             <span class="first-text-t">{{hmData[6].sx}}</span>
           </div>
@@ -81,25 +81,31 @@
           <template slot-scope="scope">
             <div class="flex-column center">
               <span>{{scope.row.name}}</span>
-              <span>{{scope.row.time1}}</span>
-              <span>{{scope.row.time2}}</span>
+              <span>{{scope.row.time}}</span>
             </div>
           </template>
         </el-table-column>
         <el-table-column
           prop="address"
+          header-align="center"
           label="中獎號碼">
           <template slot-scope="scope">
             <ul class="flex-row center table-lists">
               <template v-for="(item, index) in scope.row.hmData">
-                <li v-if="index !== 5 " class="ball-item flex-column">
-                  <div class="flex flex-column justify-content-center align-items-center">
+                <li v-if="index !== 6 " class="ball-item flex-column">
+                  <div class="flex flex-column center">
                     <img :src="formatterImg(item.hm)" class="hm-img" alt="">
                     <span class="first-text-t">{{item.sx}}</span>
                   </div>
                 </li>
-                <li v-if="index === 5 " class="ball-add-item c_red">+</li>
+                <li v-if="index === 6 " class="ball-add-item c_red">+</li>
               </template>
+              <li v-if="scope.row.hmData && scope.row.hmData.length >= 7" class="ball-item flex-column">
+                <div class="flex flex-column center">
+                  <img :src="formatterImg(scope.row.hmData[6].hm)" class="hm-img" alt="">
+                  <span class="first-text-t">{{scope.row.hmData[6].sx}}</span>
+                </div>
+              </li>
             </ul>
           </template>
         </el-table-column>
@@ -175,8 +181,24 @@
             "sx": "猪"
           }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
           name: '第2020227期',
-          time2: '21:36:04',
-          time1: '2020-08-23'
+          time: '2020-08-23'
+        }, {
+          hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
+            "color": "#1aad19",
+            "hm": "06",
+            "sx": "羊"
+          }, {"color": "#1aad19", "hm": "05", "sx": "猴"}, {
+            "color": "#0096ff",
+            "hm": "04",
+            "sx": "鸡"
+          }, {
+            "color": "#0096ff",
+            "hm": "04",
+            "sx": "鸡"
+          }, {"color": "#0096ff", "hm": "03", "sx": "狗"},
+            {"color": "#e11313", "hm": "01", "sx": "鼠"}],
+          name: '第2020227期',
+          time: '2020-08-23'
         }, {
           hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
             "color": "#1aad19",
@@ -190,27 +212,9 @@
             "color": "#e11313",
             "hm": "02",
             "sx": "猪"
-          }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
+          }, {"color": "#e11313", "hm": "07", "sx": "马"}],
           name: '第2020227期',
-          time1: '2020-08-23',
-          time2: '21:36:04'
-        }, {
-          hmData: [{"color": "#e11313", "hm": "07", "sx": "马"}, {
-            "color": "#1aad19",
-            "hm": "06",
-            "sx": "羊"
-          }, {"color": "#1aad19", "hm": "05", "sx": "猴"}, {
-            "color": "#0096ff",
-            "hm": "04",
-            "sx": "鸡"
-          }, {"color": "#0096ff", "hm": "03", "sx": "狗"}, {
-            "color": "#e11313",
-            "hm": "02",
-            "sx": "猪"
-          }, {"color": "#e11313", "hm": "01", "sx": "鼠"}],
-          name: '第2020227期',
-          time1: '2020-08-23',
-          time2: '21:36:04'
+          time: '2020-08-23'
         }]
       }
     },
@@ -364,6 +368,8 @@
   .hm-img {
     width: 100%;
     height: 100%;
+    max-width: 40px;
+    max-height: 40px;
   }
 
   .ball-add-item {

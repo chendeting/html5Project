@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="header">
     <img src="../assets/images/logo.png">
-    <div class="flex-row ft_18">
+    <div class="flex-row ft_24">
       <span>{{year}}</span>
       <span>/</span>
       <span>{{time}}</span>
@@ -34,7 +34,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 20px;
     font-weight: 700;
     letter-spacing: 3px;
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), color-stop(60%, #fefefe), color-stop(90%, #f0f0f0), to(#fff));
@@ -43,7 +42,6 @@
   }
 
   img {
-    width: 1.9rem;
-    padding: .4rem;
+    width: 3rem;
   }
 </style>

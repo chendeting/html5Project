@@ -1,12 +1,20 @@
 <template>
   <div class="nav">
     <div class="channel">
-      <ul class="module">
-        <li v-for="(channel, index) in channelsList"
-            :class="{ active : $route.path.indexOf(channel.path) >= 0}"
-            @click="clickChannel(channel,index)">{{channel.label}}
-        </li>
-      </ul>
+      <el-menu
+        :router="true"
+        :default-active="$route.name"
+        text-color="#000"
+        active-text-color="#fff">
+        <el-menu-item v-for="item in channelsList"
+                      :route="{name: item.name}"
+                      :key="item.name"
+                      :index="item.name">
+          <template slot="title">
+            <span>{{item.label}}</span>
+          </template>
+        </el-menu-item>
+      </el-menu>
     </div>
   </div>
 </template>
@@ -22,21 +30,10 @@
       return {
         isActive: 0,
         isLoading: false,
-        channelsList: [{name: 'index', path: '/index', label: '首页'},
+        channelsList: [{name: 'index', path: '/', label: '首页'},
           {name: 'FAQ', path: '/FAQ', label: 'FAQ'},
           {name: 'about', path: '/aboutUs', label: '關於我們'},
           {name: 'contact', path: '/contactWe', label: '聯繫我們'}]
-      }
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      clickChannel(channel, index) {
-        this.isActive = index
-        this.$router.push({path: channel.path})
-        scrollTo(0, 0)
       }
     }
   }
@@ -48,7 +45,6 @@
     height: 1.2rem;
     background-color: #f4f5f6;
     display: flex;
-    /*margin-top: 1.8rem;*/
   }
 
   .channel {
@@ -65,13 +61,26 @@
     height: 0;
   }
 
+  .channel ul {
+    width: 100%;
+  }
+
   .channel ul li {
     display: inline-block;
     line-height: 1.2rem;
     padding: 0 .3rem;
   }
 
-  .active {
+  .el-menu {
+    border: none;
+    background: transparent;
+  }
+
+  .el-menu-item {
+    font-size: .5rem;
+  }
+
+  .el-menu-item.is-active {
     color: #fff;
     background: #d43d3d;
   }
