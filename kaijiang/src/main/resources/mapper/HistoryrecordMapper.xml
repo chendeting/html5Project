@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cj.dao.HistoryrecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cj.model.Historyrecord">
+        <result column="years" property="years" />
+        <result column="qs" property="qs" />
+        <result column="hm1" property="hm1" />
+        <result column="hm2" property="hm2" />
+        <result column="hm3" property="hm3" />
+        <result column="hm4" property="hm4" />
+        <result column="hm5" property="hm5" />
+        <result column="hm6" property="hm6" />
+        <result column="hm7" property="hm7" />
+        <result column="sx1" property="sx1" />
+        <result column="sx2" property="sx2" />
+        <result column="sx3" property="sx3" />
+        <result column="sx4" property="sx4" />
+        <result column="sx5" property="sx5" />
+        <result column="sx6" property="sx6" />
+        <result column="sx7" property="sx7" />
+        <result column="kjdate" property="kjdate" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        years, qs, hm1, hm2, hm3, hm4, hm5, hm6, hm7, sx1, sx2, sx3, sx4, sx5, sx6, sx7, kjdate
+    </sql>
+
+    <select id="selectPageByParam" resultType="map">
+        select years, qs, hm1, hm2, hm3, hm4, hm5, hm6, hm7,kjdate from historyrecord h
+        where 1=1
+        <if test="map.qs != null and map.qs != ''">
+            AND h.qs  LIKE CONCAT ('%',#{map.qs},'%')
+        </if>
+        <if test="map.qs != null and map.qs != ''">
+            or h.years  LIKE CONCAT ('%',#{map.qs},'%')
+        </if>
+        <if test="map.years != null and map.years != ''">
+            group by h.years,h.qs having h.years =#{map.years}
+        </if>
+        order by h.qs desc
+    </select>
+
+</mapper>
