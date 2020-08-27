@@ -272,7 +272,7 @@
         setTimeout(() => {
           // this.maxReconnect-- // 不做限制 连不上一直重连
           this.initWebSocket();
-        }, 60 * 1000)
+        }, 5 * 1000)
       },
       initWebSocket() {
         try {
@@ -304,9 +304,7 @@
       websocketOnMessage(e) {
         // 消息获取成功，重置心跳
         heartCheck.start(this.socket)
-        if (e.data === 'service_response_heart') {
-          return
-        }
+        if (e.data === 'service_response_heart') return;
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
         // console.log('websocketOnMessage', dataJson)
