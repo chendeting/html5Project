@@ -177,6 +177,7 @@
         if (count < 250) {
           ws.send("HeartBeat");
           count++;
+          console.log('candy--打印:if HeartBeat---start--count', count)
         } else {
           console.log("else HeartBeat")
           clearInterval(this.timer);
@@ -278,13 +279,13 @@
       },
       reconnect() {
         let self = this
-        
+
         // console.log('尝试重连')
         if (self.lockReconnect || self.maxReconnect <= 0) {
           return
         }
         self.lockReconnect = true
-        if(self.reconnectNum < self.maxReconnect) { 
+        if(self.reconnectNum < self.maxReconnect) {
           self.timerSocketRe = setTimeout(() => {
             // this.maxReconnect-- // 不做限制 连不上一直重连
             console.info(`正在重连第${self.reconnectNum + 1}次`)
@@ -295,7 +296,7 @@
         } else if (self.reconnectNum >= self.maxReconnect || self.socket.readyState === 1) {
           clearTimeout(self.timerSocketRe);
         }
-       
+
       },
       initWebSocket() {
         try {
@@ -327,6 +328,7 @@
       websocketOnMessage(e) {
         // 消息获取成功，重置心跳
         heartCheck.start(this.socket)
+        console.log('candy--打印:websocketOnMessage', e.data)
         if (e.data === 'service_response_heart') return;
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
