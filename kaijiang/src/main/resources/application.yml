@@ -1,14 +1,14 @@
 server:
   #https监听端口
   port: 8901
-#  custom:
-#    #http监听端口
-#    httpPort: 8898
-#  ssl:
-#    key-store: classpath:qftty.cn.jks
-#    key-store-password: 123456
-#    key-store-type: JKS
-#    #key-alias: qftty #证书别名
+  custom:
+    #http监听端口
+    httpPort: 8898
+  ssl:
+    key-store: classpath:zkao46.com.jks    #qftty.cn.jks
+    key-store-password: 123456
+    key-store-type: JKS
+    #key-alias: qftty #证书别名
 spring:
   application:
     name: kaijiang

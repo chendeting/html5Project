@@ -14,6 +14,7 @@ import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -28,7 +29,20 @@ public class TestJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
+        Map<String,Object> mapNow = kaijiangBkService.queryNow(null);
         Map<String, Object> map = kaijiangBkService.queryNow("3");
+        long nextkjtime = (new Date(((String) mapNow.get("nextkjtime")).replaceAll("-", "/")).getTime() - System.currentTimeMillis()) / 1000;
+        if (map == null && nextkjtime == 0) {
+            JSONArray kaijaingRes = new JSONArray();
+            JSONObject obj = new JSONObject();
+            obj.put("qs",exchangeQs(mapNow));
+            obj.put("kjstatue","3");
+            obj.put("nextkjdate",mapNow.get("nextkjtime"));
+            obj.put("nextkjtime",0);
+            obj.put("hm",kaijaingRes);
+            WebSocket.GroupSending(JSON.toJSONString(obj,SerializerFeature.WriteMapNullValue));
+        }
+
         if (map != null && map.size() > 0) {
             log.info("-----------结果集-----------" + map.toString());
             kaijiangBkService.updateStatue("100", (Integer) map.get("qs"));
@@ -36,6 +50,7 @@ public class TestJob implements Job {
             JSONObject obj = new JSONObject();
             obj.put("qs",exchangeQs(map));
             obj.put("kjstatue",map.get("kjstatue"));
+            obj.put("nextkjdate",map.get("nextkjtime"));
             obj.put("nextkjtime",0);
             ScheduledExecutorService mScheduledExecutorService = Executors.newScheduledThreadPool(1);
             mScheduledExecutorService.scheduleWithFixedDelay(new Runnable() {
@@ -45,11 +60,11 @@ public class TestJob implements Job {
                     log.info("间隔8s开始发送信息" + map.get("hm" + count));
                     constractHm((String) map.get("hm" + count),kaijaingRes);
                     obj.put("hm",kaijaingRes);
+                    WebSocket.GroupSending(JSON.toJSONString(obj,SerializerFeature.WriteMapNullValue));
+                    count += 1;
                     if (count == 7) {
                         obj.put("kjstatue","1");
                     }
-                    WebSocket.GroupSending(JSON.toJSONString(obj,SerializerFeature.WriteMapNullValue));
-                    count += 1;
                     if (count > 7) {
                         log.info("消息发送完毕");
                         kaijiangBkService.updateStatue("1", (Integer) map.get("qs"));

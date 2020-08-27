@@ -34,7 +34,7 @@ public class WebSocket {
      *  与某个客户端的连接对话，需要通过它来给客户端发送消息
      */
     private Session session;
-    private Integer heartTime = 0;
+    private Integer heartTime = 1;
 
     /**
      * 标识当前连接客户端的用户名
@@ -66,6 +66,7 @@ public class WebSocket {
         this.name = UUID.randomUUID().toString();
         // name是用来表示唯一客户端，如果需要指定发送，需要指定发送通过name来区分
         webSocketSet.put(name,this);
+        heartTimes.put(name,heartTime);
 //        存储用户刚连上的时间
         loginTime.put(name,System.currentTimeMillis());
         Map<String,Object> map = kaijiangBkService.queryNow(null);
@@ -85,6 +86,7 @@ public class WebSocket {
             obj.put("qs",exchangeQs(map));
             obj.put("kjstatue",map.get("kjstatue"));
             obj.put("nextkjtime",(new Date(((String) map.get("nextkjtime")).replaceAll("-","/")).getTime()-System.currentTimeMillis())/1000);
+            obj.put("nextkjdate",map.get("nextkjtime"));
             obj.put("hm",kaijaingRes);
             this.session.getBasicRemote().sendText(JSON.toJSONString(obj,SerializerFeature.WriteMapNullValue));
         }else if ("100".equals(kjstatue) || "3".equals(kjstatue)) {
@@ -97,6 +99,7 @@ public class WebSocket {
                 obj.put("qs",exchangeQs(map));
                 obj.put("kjstatue",map.get("kjstatue"));
                 obj.put("nextkjtime",0);
+                obj.put("nextkjdate",map.get("nextkjtime"));
                 obj.put("hm",new JSONArray());
                 this.session.getBasicRemote().sendText(JSON.toJSONString(obj,SerializerFeature.WriteMapNullValue));
             }else {
@@ -135,10 +138,11 @@ public class WebSocket {
     public void OnMessage(String message){
         logger.info("[WebSocket] 收到消息：{}",message);
         //判断是否需要指定发送，具体规则自定义
-        if(message.indexOf("HeartBeat") != 0){
+        if(message.equalsIgnoreCase("HeartBeat")){
 //            记录用户的心跳次数
+            Integer heartTime = heartTimes.get(this.name);
             heartTime ++;
-            heartTimes.put(this.name,this.heartTime);
+            heartTimes.put(this.name,heartTime);
             AppointSending(this.name,"service_response_heart");
         }
     }
@@ -149,23 +153,22 @@ public class WebSocket {
      */
     public static void GroupSending(String message){
         messageMap.put("lastestMsg",message);
-//        long currentTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis();
         for (String name : webSocketSet.keySet()){
             try {
-//                Long fristLoginTime = loginTime.get(name);
-//                Integer count = heartTimes.get(name) == null ? 0 : heartTimes.get(name);
-////                说明超过30s没有心跳了
-//                if (((currentTime - fristLoginTime) / 1000) - count*5 >30) {
-//                    logger.info("超过30s没有心跳，移除一人，当前连接人数为：{}",webSocketSet.size());
-//                    webSocketSet.remove(name);
-//                }else {
-//
-//                }
-                webSocketSet.get(name).session.getBasicRemote().sendText(message);
+                Long fristLoginTime = loginTime.get(name);
+                Integer count = heartTimes.get(name) == null ? 0 : heartTimes.get(name);
+//                说明超过30s没有心跳了
+                if (((currentTime - fristLoginTime) / 1000) - count*5 >60) {
+                    webSocketSet.remove(name);
+                    logger.info("移除人登录时长：{}s，移除人已接收的心跳次数：{}",(currentTime - fristLoginTime) / 1000,count);
+                    logger.info("超过60s没有心跳，移除一人，当前连接人数为：{}",webSocketSet.size());
+                }else {
+                    webSocketSet.get(name).session.getBasicRemote().sendText(message);
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }
-
         }
     }
 
