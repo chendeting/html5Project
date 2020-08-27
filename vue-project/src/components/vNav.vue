@@ -67,8 +67,6 @@
 
   .channel ul li {
     display: inline-block;
-    line-height: 1.2rem;
-    padding: 0 .3rem;
   }
 
   .el-menu {

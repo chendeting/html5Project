@@ -19,7 +19,7 @@
           <div class="vertical-line"></div>
           <div class="flex-column">
             <span>下期截止時間: </span>
-            <span>2020-08-24 21:15:00</span>
+            <span>{{nextkjdate}}</span>
           </div>
         </div>
       </div>
@@ -157,9 +157,10 @@
 <script>
   import carousel from '@/components/carousel'
   import ShengXiao from "../components/shengXiao";
+  import {api} from './../utils/index'
 
   const heartCheck = {
-    timeout: 60 * 1000,
+    timeout: 5 * 1000,
     timer: null,
     serverTimer: null,
     reset() {
@@ -186,7 +187,7 @@
     },
     data() {
       return {
-        wsuri: 'ws://127.0.0.1:8901//websocket', // ws wss
+        wsuri: `wss:${api}//websocket`, // ws wss
         lockReconnect: false, // 连接失败不进行重连
         maxReconnect: 5, // 最大重连次数，若连接失败
         socket: null,
@@ -197,6 +198,7 @@
         timeInterval: null,
         hmData: [],
         qs: null,
+        nextkjdate: null, // 下次开奖时间
         kjstatue: 0, // 是否正在开奖
         currentPage: 1,
         total: 0,
@@ -209,17 +211,17 @@
     },
     methods: {
       currentChange(currentPage) {
-        this.currentPage = currentPage
-        this.getDataLists()
+        this.currentPage = currentPage;
+        this.getDataLists();
       },
       getDataLists() {
-        this.$http.post('http://127.0.0.1:8901/running/historyRecord?limit=10&curPage=' + this.currentPage)
+        this.$http.post(`https:${api}/running/historyRecord?limit=10&curPage=${this.currentPage}`)
             .then(res => {
-              let _data = res.data && res.data.result
+              let _data = res.data && res.data.result;
               if (_data) {
-                this.tableData = []
-                this.tableData = _data.records
-                this.total = _data.total
+                this.tableData = [];
+                this.tableData = _data.records;
+                this.total = _data.total;
               }
             })
       },
@@ -269,7 +271,7 @@
         }
         setTimeout(() => {
           // this.maxReconnect-- // 不做限制 连不上一直重连
-          this.initWebSocket()
+          this.initWebSocket();
         }, 60 * 1000)
       },
       initWebSocket() {
@@ -281,27 +283,25 @@
             console.log('您的浏览器不支持websocket')
           }
           // 监听socket连接
-          this.socket.onopen = this.websocketOnOpen
+          this.socket.onopen = this.websocketOnOpen;
           // 监听socket错误信息
-          this.socket.onerror = this.websocketOnError
+          this.socket.onerror = this.websocketOnError;
           // 监听socket消息
-          this.socket.onmessage = this.websocketOnMessage
+          this.socket.onmessage = this.websocketOnMessage;
           // 监听socket关闭
-          this.socket.onclose = this.websocketClose
+          this.socket.onclose = this.websocketClose;
         } catch (e) {
-          this.reconnect()
+          this.reconnect();
         }
       },
       websocketOnOpen() {
-        heartCheck.start(this.socket)
-        this.websocketSend()
+        heartCheck.start(this.socket);
+        this.websocketSend();
       },
       websocketOnError(e) {
-        console.log('WebSocket连接发生错误', e)
         this.reconnect()
       },
       websocketOnMessage(e) {
-        console.log('eeeeee', e)
         // 消息获取成功，重置心跳
         heartCheck.start(this.socket)
         if (e.data === 'service_response_heart') {
@@ -309,12 +309,13 @@
         }
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
-        console.log('websocketOnMessage', dataJson)
-        this.setTimer(dataJson.nextkjtime)
-        this.kjstatue = dataJson.kjstatue
-        this.qs = dataJson.qs
+        // console.log('websocketOnMessage', dataJson)
+        this.setTimer(dataJson.nextkjtime);
+        this.kjstatue = dataJson.kjstatue;
+        this.nextkjdate = dataJson.nextkjdate;
+        this.qs = dataJson.qs;
         if (data && dataJson.hm) {
-          this.hmData = []
+          this.hmData = [];
           for (let i = 0; i < 7; i++) {
             if (dataJson.hm[i]) {
               this.hmData.push(dataJson.hm[i])
@@ -328,12 +329,12 @@
           }
         }
       },
-      websocketClose(e) {
-        this.reconnect()
+      websocketClose() {
+        this.reconnect();
       },
       websocketSend() {
-        let data = 'HeartBeat'
-        this.socket.send(data)
+        let data = 'HeartBeat';
+        this.socket.send(data);
       }
     },
     destroyed() {
