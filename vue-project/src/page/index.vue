@@ -169,14 +169,24 @@
     },
     start(ws) {
       this.reset()
+      let count = 0;
       this.timer = setTimeout(() => {
         // console.log('发送心跳,后端收到后，返回一个心跳消息')
         // onmessage拿到返回的心跳就说明连接正常
-        ws.send('HeartBeat')
-        this.serverTimer = setTimeout(() => {
+        // 心跳时间内收不到消息，主动触发连接关闭，开始重连
+        if (count < 250) {
+          ws.send("HeartBeat");
+          count++;
+        } else {
+          console.log("else HeartBeat")
+          clearInterval(this.timer);
+          count = 0;
+          // this.serverTimer = setTimeout(() => {
+          //
+          // }, this.timeout)
           // 如果超过一定时间还没响应(响应后触发重置)，说明后端断开了
           ws.close()
-        }, this.timeout)
+        }
       }, this.timeout)
     }
   }

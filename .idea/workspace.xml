@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddeb7072-c45a-4ca4-bbed-cda856ce8832" name="Default Changelist" comment="调整header与导航，修改路由，修改首页">
+    <list default="true" id="ddeb7072-c45a-4ca4-bbed-cda856ce8832" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/config/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/components/vNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/components/vNav.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vue-project/src/page/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/page/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue-project/src/utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-project/src/utils/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -126,7 +123,7 @@
         <counts>
           <entry key="css" value="7" />
           <entry key="html" value="5" />
-          <entry key="js" value="21" />
+          <entry key="js" value="23" />
           <entry key="json" value="3" />
           <entry key="vue" value="43" />
         </counts>
@@ -136,7 +133,7 @@
           <entry key="CSS" value="7" />
           <entry key="HTML" value="5" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="21" />
+          <entry key="JavaScript" value="23" />
           <entry key="Vue.js" value="43" />
         </counts>
       </usages-collector>
@@ -146,8 +143,8 @@
           <entry key="html" value="21" />
           <entry key="js" value="205" />
           <entry key="json" value="24" />
-          <entry key="txt" value="100" />
-          <entry key="vue" value="4888" />
+          <entry key="txt" value="105" />
+          <entry key="vue" value="4906" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -156,8 +153,8 @@
           <entry key="HTML" value="21" />
           <entry key="JSON" value="24" />
           <entry key="JavaScript" value="205" />
-          <entry key="PLAIN_TEXT" value="100" />
-          <entry key="Vue.js" value="4888" />
+          <entry key="PLAIN_TEXT" value="105" />
+          <entry key="Vue.js" value="4906" />
         </counts>
       </usages-collector>
     </session>
@@ -177,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/vue-project/config/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -185,12 +182,21 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vue-project/src/page/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="225" column="14" lean-forward="true" selection-start-line="225" selection-start-column="14" selection-end-line="225" selection-end-column="14" />
+            <state relative-caret-position="289">
+              <caret line="178" column="18" lean-forward="true" selection-start-line="178" selection-start-column="18" selection-end-line="178" selection-end-column="18" />
               <folding>
                 <element signature="e#6818#6862#0" expanded="true" />
                 <element signature="e#8711#10081#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/assets/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="50" column="31" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -218,7 +224,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showLogin</find>
       <find>muIsActive</find>
       <find>channelIndex</find>
       <find>load</find>
@@ -247,6 +252,7 @@
       <find>close</find>
       <find>start</find>
       <find>serverTimeoutObj</find>
+      <find>5*</find>
       <find>maxReconnect</find>
     </findStrings>
     <replaceStrings>
@@ -261,6 +267,9 @@
       <replace>websocketClose</replace>
       <replace>websocketSend</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/vue-project/dist</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -348,24 +357,6 @@
             <path>
               <item name="html5Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="html5Project" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="html5Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="html5Project" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="html5Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="html5Project" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="html5Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="html5Project" type="462c0819:PsiDirectoryNode" />
               <item name="vue-project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -379,7 +370,7 @@
               <item name="html5Project" type="462c0819:PsiDirectoryNode" />
               <item name="vue-project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -568,15 +559,28 @@
       <option name="project" value="LOCAL" />
       <updated>1598343645084</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="bug修复">
+      <created>1598514494008</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1598514494008</updated>
+    </task>
+    <task id="LOCAL-00015" summary="bug修复">
+      <created>1598517843131</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1598517843131</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257155000" />
+    <option name="totallyTimeSpent" value="260610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49863014" visible="true" weight="0.16997617" />
       <window_info id="Structure" order="1" sideWeight="0.50136983" side_tool="true" weight="0.17474186" />
@@ -624,10 +628,10 @@
     <MESSAGE value="整体页面布局修改" />
     <MESSAGE value="首页编写socket，添加图片" />
     <MESSAGE value="调整header与导航，修改路由，修改首页" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整header与导航，修改路由，修改首页" />
+    <MESSAGE value="bug修复" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug修复" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SuperSlide2.1-demo-00/demo/iframe/3.0-picScroll-left-iframe.html" />
     <entry file="file://$PROJECT_DIR$/static/assets/third/jquery1.42.min.js" />
     <entry file="file://$PROJECT_DIR$/static/assets/images/icoCircle.gif" />
     <entry file="file://$PROJECT_DIR$/SuperSlide2.1-demo-00/jquery.SuperSlide.2.1.3.source.js" />
@@ -844,24 +848,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/assets/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/config/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vue-project/dist/static/js/0.82a26e5843141a6d2d62.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3523">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/assets/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="50" column="31" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vue-project/src/page/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="225" column="14" lean-forward="true" selection-start-line="225" selection-start-column="14" selection-end-line="225" selection-end-column="14" />
+        <state relative-caret-position="289">
+          <caret line="178" column="18" lean-forward="true" selection-start-line="178" selection-start-column="18" selection-end-line="178" selection-end-column="18" />
           <folding>
             <element signature="e#6818#6862#0" expanded="true" />
             <element signature="e#8711#10081#0" />
