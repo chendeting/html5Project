@@ -199,13 +199,15 @@
       return {
         wsuri: `wss:${api}//websocket`, // ws wss
         lockReconnect: false, // 连接失败不进行重连
-        maxReconnect: 5, // 最大重连次数，若连接失败
+        maxReconnect: 250, // 最大重连次数，若连接失败
+        reconnectNum: 0, // 重连次数
         socket: null,
         day: 0,
         hour: 0,
         minute: 0,
         second: 0,
         timeInterval: null,
+        timerSocketRe: null,
         hmData: [],
         qs: null,
         nextkjdate: null, // 下次开奖时间
@@ -275,14 +277,25 @@
         }
       },
       reconnect() {
+        let self = this
+        
         // console.log('尝试重连')
-        if (this.lockReconnect || this.maxReconnect <= 0) {
+        if (self.lockReconnect || self.maxReconnect <= 0) {
           return
         }
-        setTimeout(() => {
-          // this.maxReconnect-- // 不做限制 连不上一直重连
-          this.initWebSocket();
-        }, 5 * 1000)
+        self.lockReconnect = true
+        if(self.reconnectNum < self.maxReconnect) { 
+          self.timerSocketRe = setTimeout(() => {
+            // this.maxReconnect-- // 不做限制 连不上一直重连
+            console.info(`正在重连第${self.reconnectNum + 1}次`)
+            self.initWebSocket();
+            self.reconnectNum++;
+            self.lockReconnect = false
+          }, 5 * 1000)
+        } else if (self.reconnectNum >= self.maxReconnect || self.socket.readyState === 1) {
+          clearTimeout(self.timerSocketRe);
+        }
+       
       },
       initWebSocket() {
         try {
