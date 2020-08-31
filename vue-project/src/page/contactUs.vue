@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="contact-us module">
-    <img src="./../assets/images/about_banner.jpg" alt="背景图" class="aboutImg">
+    <img src="./../assets/images/banner3.jpg" alt="背景图" class="aboutImg">
     <div class="about-container mtb-3">
       <div class="about-content">
         <div class="title ft_26 text-center c_red">聯繫我們</div>

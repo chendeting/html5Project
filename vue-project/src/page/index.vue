@@ -6,9 +6,15 @@
     <div class="plr-3">
       <div class="flex-row timer-box mtb-3 align-center">
         <span class="text">倒计时：</span>
-        <span class="time-text" v-text="hour+'：'"></span>
-        <span class="time-text" v-text="minute+'：'"></span>
-        <span class="time-text" v-text="second"></span>
+        <span v-if="hour !== 0" class="time-text"
+              v-text="hour+'：'"></span>
+        <span v-if="hour === 0" class="time-text">00：</span>
+        <span v-if="minute !== 0" class="time-text"
+              v-text="minute+'：'"></span>
+        <span v-if="minute === 0" class="time-text">00：</span>
+        <span v-if="second !== 0" class="time-text"
+              v-text="second" style="text-align: left"></span>
+        <span v-if="second === 0" class="time-text" style="text-align: left">00</span>
       </div>
     </div><!--倒计时模块-->
     <div class="flex-column plr-3">
@@ -18,7 +24,7 @@
           <div v-if="qs">第{{qs}}期</div>
           <div class="vertical-line"></div>
           <div class="flex-column">
-            <span>下期截止時間: </span>
+            <span>下期开奖時間: </span>
             <span>{{nextkjdate}}</span>
           </div>
         </div>
@@ -102,15 +108,15 @@
       </ul>
 
       <el-table
-          v-if="tableData && tableData.length > 0"
-          :data="tableData"
-          class="mtb-3 kaijiang-table"
-          stripe
-          style="width: 100%">
+        v-if="tableData && tableData.length > 0"
+        :data="tableData"
+        class="mtb-3 kaijiang-table"
+        stripe
+        style="width: 100%">
         <el-table-column
-            prop="date"
-            label="期號/開獎時間"
-            width="120">
+          prop="date"
+          label="期號/開獎時間"
+          width="120">
           <template slot-scope="scope">
             <div class="flex-column center">
               <span>第{{scope.row.qs}}期</span>
@@ -119,9 +125,9 @@
           </template>
         </el-table-column>
         <el-table-column
-            prop="address"
-            header-align="center"
-            label="中獎號碼">
+          prop="address"
+          header-align="center"
+          label="中獎號碼">
           <template slot-scope="scope">
             <ul class="flex-row center table-lists">
               <template v-for="(item, index) in scope.row.hm">
@@ -144,11 +150,11 @@
         </el-table-column>
       </el-table>
       <el-pagination
-          v-if="total > 0"
-          class="my-pagination"
-          layout="total, prev, pager, next"
-          @current-change="currentChange"
-          :total="total">
+        v-if="total > 0"
+        class="my-pagination"
+        layout="total, prev, pager, next"
+        @current-change="currentChange"
+        :total="total">
       </el-pagination>
     </div>
   </div>
@@ -220,6 +226,7 @@
     },
     mounted() {
       this.initWebSocket();
+      this.setTimer(120000);
       this.getDataLists()
     },
     methods: {
@@ -229,14 +236,14 @@
       },
       getDataLists() {
         this.$http.post(`https:${api}/running/historyRecord?limit=10&curPage=${this.currentPage}`)
-            .then(res => {
-              let _data = res.data && res.data.result;
-              if (_data) {
-                this.tableData = [];
-                this.tableData = _data.records;
-                this.total = _data.total;
-              }
-            })
+          .then(res => {
+            let _data = res.data && res.data.result;
+            if (_data) {
+              this.tableData = [];
+              this.tableData = _data.records;
+              this.total = _data.total;
+            }
+          })
       },
       formatterImg(hm) {
         return require(`./../assets/images/${hm}.png`)
@@ -285,7 +292,7 @@
           return
         }
         self.lockReconnect = true
-        if(self.reconnectNum < self.maxReconnect) {
+        if (self.reconnectNum < self.maxReconnect) {
           self.timerSocketRe = setTimeout(() => {
             // this.maxReconnect-- // 不做限制 连不上一直重连
             // console.info(`正在重连第${self.reconnectNum + 1}次`)
@@ -373,10 +380,19 @@
     padding: .3rem;
   }
 
-  .timer-box .time-text {
-    min-width: .6rem;
+  .timer-box .text {
+    height: 1rem;
+    line-height: 1rem;
+  }
+
+  .timer-box .time-text{
     font-weight: bold;
     font-size: .85rem;
+    height: 1rem;
+    line-height: 1rem;
+    min-width: .6rem;
+    width: 1.9rem;
+    text-align: right;
   }
 
   .vertical-line {

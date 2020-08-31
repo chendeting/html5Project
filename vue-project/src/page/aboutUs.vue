@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="about-us module">
-    <img src="./../assets/images/about_banner.jpg" alt="背景图" class="aboutImg">
+    <img src="./../assets/images/banner2.jpg" alt="背景图" class="aboutImg">
     <el-tabs v-model="activeName">
       <el-tab-pane label="玩法規則" name="first">
         <a-first></a-first>
