@@ -228,7 +228,6 @@
     },
     mounted() {
       this.initWebSocket();
-      this.setTimer(120000);
       this.getDataLists()
     },
     methods: {
