@@ -21,7 +21,7 @@
       <div class="content-title flex-row justify-between align-center">
         <div class="ft_18 title-left c_red">澳門六合彩</div>
         <div class="ft_18 title-right c_red flex-row align-center">
-          <div v-if="qs">第{{qs}}期</div>
+          <div v-if="qs">第{{qs}}{{years}}期</div>
           <div class="vertical-line"></div>
           <div class="flex-column">
             <span>下期开奖時間: </span>
@@ -29,8 +29,9 @@
           </div>
         </div>
       </div>
-      <div v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100" class="kaijian-bg">
-        <img src="./../assets/images/QIU.gif" alt="">
+      <div class="kaijian-bg">
+        <img v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100" src="./../assets/images/QIU.gif" alt="">
+        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100" src="./../assets/images/QIU_static.png" alt="">
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
@@ -217,6 +218,7 @@
         timerSocketRe: null,
         hmData: [],
         qs: null,
+        years: '',
         nextkjdate: null, // 下次开奖时间
         kjstatue: 0, // 是否正在开奖
         currentPage: 1,
@@ -343,6 +345,7 @@
         this.kjstatue = dataJson.kjstatue;
         this.nextkjdate = dataJson.nextkjdate;
         this.qs = dataJson.qs;
+        this.years = dataJson.years;
         if (data && dataJson.hm) {
           this.hmData = [];
           for (let i = 0; i < 7; i++) {
