@@ -31,7 +31,7 @@
       </div>
       <div class="kaijian-bg">
         <img v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100" src="./../assets/images/QIU.gif" alt="">
-        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100" src="./../assets/images/QIU_static.png" alt="">
+        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100" src="./../assets/images/QIU_static.gif" alt="">
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
