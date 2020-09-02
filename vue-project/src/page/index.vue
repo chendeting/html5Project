@@ -31,9 +31,6 @@
           <span class="time-text">0</span>
           <span class="time-text">0</span>
         </template>
-        <!--<span v-if="second !== 0" class="time-text"-->
-        <!--v-text="second" style="text-align: left"></span>-->
-        <!--<span v-if="second === 0" class="time-text" style="text-align: left">00</span>-->
       </div>
     </div><!--倒计时模块-->
     <div class="flex-column plr-3">
@@ -373,7 +370,6 @@
         if (e.data === 'service_response_heart') return;
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
-        // console.log('websocketOnMessage', dataJson)
         this.setTimer(dataJson.nextkjtime);
         this.kjstatue = dataJson.kjstatue;
         this.nextkjdate = dataJson.nextkjdate;
