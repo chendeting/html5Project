@@ -11,7 +11,7 @@
       </keep-alive>
       <div class="layout-push"></div>
     </div>
-    <div class="bottom">版權所有 不得轉載 © 2020 澳門六合彩</div>
+    <div class="bottom">版權所有 不得轉載 © 2020 葡京王牌六合彩</div>
   </div>
 </template>
 

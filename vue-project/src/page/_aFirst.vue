@@ -3,8 +3,8 @@
     <div class="about-intro">
       <div class="title ft_24 text-center c_red">關於我們</div>
       <div class="content">
-        <p>澳門六合彩是從1至49個號碼中選出六個為中獎號碼的獎券，由香港賽馬會的附屬公司「香港馬會獎券澳門分公司」經辦 。</p>
-        <p>澳門六合彩每晚攪珠一次，並於網絡現場直播。</p>
+        <p>葡京王牌六合彩是從1至49個號碼中選出六個為中獎號碼的獎券，由香港賽馬會的附屬公司「香港馬會獎券葡京王牌分公司」經辦 。</p>
+        <p>葡京王牌六合彩每晚攪珠一次，並於網絡現場直播。</p>
       </div>
     </div>
     <div class="about-content">
@@ -12,7 +12,7 @@
         玩法規則
       </div>
       <div class="rules-content">
-        <p>澳門六合彩注項單位為每注10澳元。選擇複式或膽拖注項時，可以每注澳門幣$5「部份注項單位」投注。</p>
+        <p>葡京王牌六合彩注項單位為每注10澳元。選擇複式或膽拖注項時，可以每注澳門幣$5「部份注項單位」投注。</p>
         <p>有關之獎金則根據每注「部份注項單位」佔注項單位的份數計算。 每期六合彩攪珠均從49個號碼中攪出七個號碼。</p>
         <p>首六個號碼稱為「攪出號碼」，而第七個號碼稱為「特別號碼」。</p>
         <p>獎項詳情如下：</p>
@@ -96,7 +96,6 @@
         this.tableData = []
         this.widthFlag = document.body.clientWidth >= 450
         this.tableData = _tableData
-        console.log('candy--打印:document.body.clientWidth---', document.body.clientWidth, this.widthFlag)
       })
     }
   }

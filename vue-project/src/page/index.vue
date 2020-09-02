@@ -19,7 +19,7 @@
     </div><!--倒计时模块-->
     <div class="flex-column plr-3">
       <div class="content-title flex-row justify-between align-center">
-        <div class="ft_18 title-left c_red">澳門六合彩</div>
+        <div class="ft_18 title-left c_red">葡京王牌六合彩</div>
         <div class="ft_18 title-right c_red flex-row align-center">
           <div v-if="qs">第{{years}}{{qs}}期</div>
           <div class="vertical-line"></div>
@@ -120,8 +120,8 @@
           width="120">
           <template slot-scope="scope">
             <div class="flex-column center">
-              <span>第{{scope.row.qs}}期</span>
-              <span>{{scope.row.years}}</span>
+              <span>第{{scope.row.years}}{{scope.row.qs}}期</span>
+              <span>{{scope.row.kjdate}}</span>
             </div>
           </template>
         </el-table-column>

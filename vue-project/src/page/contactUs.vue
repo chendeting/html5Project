@@ -5,7 +5,7 @@
       <div class="about-content">
         <div class="title ft_26 text-center c_red">聯繫我們</div>
         <div class="content">
-          <p>澳門六合彩將竭誠為您提供最及時、最便捷、及滿意的服務。若有問題可透過以下方式與我們取得聯繫。</p>
+          <p>葡京王牌六合彩將竭誠為您提供最及時、最便捷、及滿意的服務。若有問題可透過以下方式與我們取得聯繫。</p>
         </div>
       </div>
     </div>
