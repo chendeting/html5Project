@@ -4,17 +4,36 @@
       <carousel></carousel>
     </div>
     <div class="plr-3">
-      <div class="flex-row timer-box mtb-3 align-center">
-        <span class="text">倒计时：</span>
-        <span v-if="hour !== 0" class="time-text"
-              v-text="hour+'：'"></span>
-        <span v-if="hour === 0" class="time-text">00：</span>
-        <span v-if="minute !== 0" class="time-text"
-              v-text="minute+'：'"></span>
-        <span v-if="minute === 0" class="time-text">00：</span>
-        <span v-if="second !== 0" class="time-text"
-              v-text="second" style="text-align: left"></span>
-        <span v-if="second === 0" class="time-text" style="text-align: left">00</span>
+      <div class="flex-row timer-box mtb-3 center">
+        <template v-if="hour !== 0">
+          <span class="time-text">{{String(hour).slice(0, 1)}}</span>
+          <span class="time-text" style="margin-right: 0">{{String(hour).slice(1)}}</span>
+        </template>
+        <template v-if="hour === 0">
+          <span class="time-text">0</span>
+          <span class="time-text" style="margin-right: 0">0</span>
+        </template>
+        <div class="time-tips">:</div>
+        <template v-if="minute !== 0">
+          <span class="time-text">{{String(minute).slice(0, 1)}}</span>
+          <span class="time-text" style="margin-right: 0">{{String(minute).slice(1)}}</span>
+        </template>
+        <template v-if="minute === 0">
+          <span class="time-text">0</span>
+          <span class="time-text" style="margin-right: 0">0</span>
+        </template>
+        <div class="time-tips">:</div>
+        <template v-if="minute !== 0">
+          <span class="time-text">{{String(second).slice(0, 1)}}</span>
+          <span class="time-text">{{String(second).slice(1)}}</span>
+        </template>
+        <template v-if="minute === 0">
+          <span class="time-text">0</span>
+          <span class="time-text">0</span>
+        </template>
+        <!--<span v-if="second !== 0" class="time-text"-->
+        <!--v-text="second" style="text-align: left"></span>-->
+        <!--<span v-if="second === 0" class="time-text" style="text-align: left">00</span>-->
       </div>
     </div><!--倒计时模块-->
     <div class="flex-column plr-3">
@@ -229,6 +248,21 @@
     mounted() {
       this.initWebSocket();
       this.getDataLists()
+      // this.setTimer(12000)
+      // this.tableData = [{
+      //   years: '2020', qs: '080',
+      //   kjdate: '2020-8-09',
+      //   hm: [{hm: '02', sx: 'shu'}, {hm: '02', sx: 'shu'}, {hm: '02', sx: 'shu'}, {hm: '02', sx: 'shu'}, {
+      //     hm: '02',
+      //     sx: 'shu'
+      //   }, {
+      //     hm: '02',
+      //     sx: 'shu'
+      //   }, {
+      //     hm: '02',
+      //     sx: 'shu'
+      //   }]
+      // }]
     },
     methods: {
       currentChange(currentPage) {
@@ -380,6 +414,7 @@
     box-shadow: 0 1px 4px #c8c8c8;
     border: 1px solid #dadada;
     padding: .3rem;
+    color: #4e4d4d;
   }
 
   .timer-box .text {
@@ -387,14 +422,24 @@
     line-height: 1rem;
   }
 
-  .timer-box .time-text{
+  .timer-box .time-tips,
+  .timer-box .time-text {
     font-weight: bold;
     font-size: .85rem;
     height: 1rem;
     line-height: 1rem;
     min-width: .6rem;
-    width: 1.9rem;
-    text-align: right;
+    text-align: center;
+    width: .6rem;
+  }
+
+  .timer-box .time-text {
+    border: 1px solid #dadada;
+    margin-right: .1rem;
+  }
+
+  .timer-box .time-tips {
+    line-height: .9rem;
   }
 
   .vertical-line {
@@ -427,6 +472,10 @@
 
   .table-lists .ball-item {
     padding: 0 .1rem;
+  }
+
+  /deep/ .el-table th>.cell {
+    text-align: center;
   }
 
   /deep/ .my-pagination .el-pager li {
