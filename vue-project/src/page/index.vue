@@ -21,7 +21,7 @@
       <div class="content-title flex-row justify-between align-center">
         <div class="ft_18 title-left c_red">澳門六合彩</div>
         <div class="ft_18 title-right c_red flex-row align-center">
-          <div v-if="qs">第{{qs}}{{years}}期</div>
+          <div v-if="qs">第{{years}}{{qs}}期</div>
           <div class="vertical-line"></div>
           <div class="flex-column">
             <span>下期开奖時間: </span>
