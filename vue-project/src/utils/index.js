@@ -46,6 +46,3 @@ export const shengxiao = () => {
     {name:'狗'},
     {name:'猪'}]
 }
-
-export const api = '//132.232.222.50:8901'
-// export const api = '//127.0.0.1:8901'

@@ -12,6 +12,8 @@ import './assets/css/common.css'
 
 Vue.use(Vuex)
 Vue.use(ElementUI)
+Vue.prototype.httpApi = window.vueApi.httpApi
+Vue.prototype.wssApi = window.vueApi.wssApi
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

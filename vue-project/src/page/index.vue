@@ -180,7 +180,6 @@
 <script>
   import carousel from '@/components/carousel'
   import ShengXiao from "../components/shengXiao";
-  import {api} from './../utils/index'
 
   const heartCheck = {
     timeout: 5 * 1000,
@@ -221,7 +220,7 @@
     },
     data() {
       return {
-        wsuri: `wss:${api}//websocket`, // ws wss
+        wsuri: `${this.wssApi}//websocket`, // ws wss
         lockReconnect: false, // 连接失败不进行重连
         maxReconnect: 250, // 最大重连次数，若连接失败
         reconnectNum: 0, // 重连次数
@@ -245,6 +244,7 @@
     mounted() {
       this.initWebSocket();
       this.getDataLists()
+      console.log('candy--打印:wsuri', this.wsuri)
       // this.setTimer(12000)
       // this.tableData = [{
       //   years: '2020', qs: '080',
@@ -267,7 +267,8 @@
         this.getDataLists();
       },
       getDataLists() {
-        this.$http.post(`https:${api}/running/historyRecord?limit=10&curPage=${this.currentPage}`)
+        let self = this
+        this.$http.post(`${self.httpApi}/running/historyRecord?limit=10&curPage=${this.currentPage}`)
           .then(res => {
             let _data = res.data && res.data.result;
             if (_data) {
