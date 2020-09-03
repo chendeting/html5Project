@@ -132,6 +132,10 @@ a {
     margin-top: .3rem;
 }
 
+.mt-1 {
+    margin-top: .1rem;
+}
+
 .mtb-3 {
     margin: .3rem 0;
 }

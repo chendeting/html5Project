@@ -1,10 +1,12 @@
 <template lang="html">
-  <div class="header">
-    <img src="../assets/images/logo.png">
-    <div class="flex-row ft_24">
-      <span>{{year}}</span>
-      <span>/</span>
-      <span>{{time}}</span>
+  <div class="plr-3">
+    <div class="header">
+      <img src="../assets/images/logo.png">
+      <div class="flex-row ft_24">
+        <span>{{year}}</span>
+        <span>/</span>
+        <span>{{time}}</span>
+      </div>
     </div>
   </div>
 </template>

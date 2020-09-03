@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="newsContent">
+    <div class="newsContent plr-3">
       <carousel></carousel>
     </div>
-    <div class="plr-3">
-      <div class="flex-row timer-box mtb-3 center">
+    <div class="plr-3 mt-1">
+      <div class="flex-row timer-box center">
         <template v-if="hour !== 0">
           <span class="time-text">{{String(hour).slice(0, 1)}}</span>
           <span class="time-text" style="margin-right: 0">{{String(hour).slice(1)}}</span>
@@ -33,7 +33,7 @@
         </template>
       </div>
     </div><!--倒计时模块-->
-    <div class="flex-column plr-3">
+    <div class="flex-column plr-3 mt-1">
       <div class="content-title flex-row justify-between align-center">
         <div class="ft_18 title-left c_red">葡京王牌六合彩</div>
         <div class="ft_18 title-right c_red flex-row align-center">
@@ -46,8 +46,8 @@
         </div>
       </div>
       <div class="kaijian-bg">
-        <img v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100" src="./../assets/images/QIU.gif" alt="">
-        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100" src="./../assets/images/QIU_static.gif" alt="">
+        <img v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100 || Number(nextkjtime) === 0" src="./../assets/images/QIU.gif" alt="">
+        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100 && Number(nextkjtime) !== 0" src="./../assets/images/QIU_static.gif" alt="">
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
@@ -127,7 +127,7 @@
       <el-table
         v-if="tableData && tableData.length > 0"
         :data="tableData"
-        class="mtb-3 kaijiang-table"
+        class="mt-1 kaijiang-table mb-3"
         stripe
         style="width: 100%">
         <el-table-column
@@ -234,6 +234,7 @@
         hmData: [],
         qs: null,
         years: '',
+        nextkjtime: 0, // 下次开奖时间
         nextkjdate: null, // 下次开奖时间
         kjstatue: 0, // 是否正在开奖
         currentPage: 1,
@@ -244,7 +245,6 @@
     mounted() {
       this.initWebSocket();
       this.getDataLists()
-      console.log('candy--打印:wsuri', this.wsuri)
       // this.setTimer(12000)
       // this.tableData = [{
       //   years: '2020', qs: '080',
@@ -372,6 +372,7 @@
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
         this.setTimer(dataJson.nextkjtime);
+        this.nextkjtime = dataJson.nextkjtime;
         this.kjstatue = dataJson.kjstatue;
         this.nextkjdate = dataJson.nextkjdate;
         this.qs = dataJson.qs;

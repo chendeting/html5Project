@@ -53,6 +53,7 @@
   .carousel ul {
     position: relative;
     height: 5.33rem;
+    overflow: hidden;
   }
 
   .carousel, ul, li {

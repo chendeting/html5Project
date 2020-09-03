@@ -1,20 +1,22 @@
 <template>
-  <div class="nav">
-    <div class="channel">
-      <el-menu
-        :router="true"
-        :default-active="$route.name"
-        text-color="#000"
-        active-text-color="#fff">
-        <el-menu-item v-for="item in channelsList"
-                      :route="{name: item.name}"
-                      :key="item.name"
-                      :index="item.name">
-          <template slot="title">
-            <span>{{item.label}}</span>
-          </template>
-        </el-menu-item>
-      </el-menu>
+  <div class="plr-3">
+    <div class="nav">
+      <div class="channel">
+        <el-menu
+          :router="true"
+          :default-active="$route.name"
+          text-color="#000"
+          active-text-color="#fff">
+          <el-menu-item v-for="item in channelsList"
+                        :route="{name: item.name}"
+                        :key="item.name"
+                        :index="item.name">
+            <template slot="title">
+              <span>{{item.label}}</span>
+            </template>
+          </el-menu-item>
+        </el-menu>
+      </div>
     </div>
   </div>
 </template>
@@ -76,6 +78,7 @@
 
   .el-menu-item {
     font-size: .5rem;
+    padding: 0 15px;
   }
 
   .el-menu-item.is-active {
