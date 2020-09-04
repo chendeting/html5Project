@@ -53,8 +53,8 @@
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
             <template v-if="hmData[0]">
-              <img v-if="hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img" alt="">
+              <img v-if="hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
               <sheng-xiao v-if="!hmData[0].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -63,8 +63,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[1]">
-              <img v-if="hmData[1].hm" :src="formatterImg(hmData[1].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[1].hm" src="./../assets/images/hm4.gif" class="hm-img" alt="">
+              <img v-if="hmData[1].hm" :src="formatterImg(hmData[1].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[1].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[1].sx" class="first-text-t">{{hmData[1].sx}}</span>
               <sheng-xiao v-if="!hmData[1].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -73,8 +73,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[2]">
-              <img v-if="hmData[2].hm" :src="formatterImg(hmData[2].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[2].hm" src="./../assets/images/hm3.gif" class="hm-img" alt="">
+              <img v-if="hmData[2].hm" :src="formatterImg(hmData[2].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[2].hm" src="./../assets/images/hm3.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[2].sx" class="first-text-t">{{hmData[2].sx}}</span>
               <sheng-xiao v-if="!hmData[2].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -83,8 +83,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[3]">
-              <img v-if="hmData[3].hm" :src="formatterImg(hmData[3].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[3].hm" src="./../assets/images/hm4.gif" class="hm-img" alt="">
+              <img v-if="hmData[3].hm" :src="formatterImg(hmData[3].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[3].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[3].sx" class="first-text-t">{{hmData[3].sx}}</span>
               <sheng-xiao v-if="!hmData[3].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -93,8 +93,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[4]">
-              <img v-if="hmData[4].hm" :src="formatterImg(hmData[4].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[4].hm" src="./../assets/images/hm5.gif" class="hm-img" alt="">
+              <img v-if="hmData[4].hm" :src="formatterImg(hmData[4].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[4].hm" src="./../assets/images/hm5.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[4].sx" class="first-text-t">{{hmData[4].sx}}</span>
               <sheng-xiao v-if="!hmData[4].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -104,8 +104,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[5]">
-              <img v-if="hmData[5].hm" :src="formatterImg(hmData[5].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[5].hm" src="./../assets/images/hm6.gif" class="hm-img" alt="">
+              <img v-if="hmData[5].hm" :src="formatterImg(hmData[5].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[5].hm" src="./../assets/images/hm6.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[5].sx" class="first-text-t">{{hmData[5].sx}}</span>
               <sheng-xiao v-if="!hmData[5].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -115,8 +115,8 @@
         <li class="ball-item">
           <div class="flex flex-column center">
             <template v-if="hmData[6]">
-              <img v-if="hmData[6].hm" :src="formatterImg(hmData[6].hm)" class="hm-img" alt="">
-              <img v-if="!hmData[6].hm" src="./../assets/images/hm7.gif" class="hm-img" alt="">
+              <img v-if="hmData[6].hm" :src="formatterImg(hmData[6].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-if="!hmData[6].hm" src="./../assets/images/hm7.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[6].sx" class="first-text-t">{{hmData[6].sx}}</span>
               <sheng-xiao v-if="!hmData[6].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -493,6 +493,11 @@
     height: 100%;
     max-width: 40px;
     max-height: 40px;
+  }
+
+  .ball-content .hm-img-pc {
+    max-width: 88px;
+    max-height: 88px;
   }
 
   .ball-add-item {
