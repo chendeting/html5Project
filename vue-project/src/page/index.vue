@@ -46,8 +46,8 @@
         </div>
       </div>
       <div class="kaijian-bg">
-        <img v-if="Number(kjstatue) === 3 || Number(kjstatue) === 100 || Number(nextkjtime) === 0" src="./../assets/images/QIU.gif" alt="">
-        <img v-if="Number(kjstatue) !== 3 && Number(kjstatue) !== 100 && Number(nextkjtime) !== 0" src="./../assets/images/QIU_static.gif" alt="">
+        <img v-if="Number(status) === 1" src="./../assets/images/QIU.gif" alt="">
+        <img v-if="Number(status) !== 1" src="./../assets/images/QIU_static.gif" alt="">
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
@@ -237,6 +237,7 @@
         nextkjtime: 0, // 下次开奖时间
         nextkjdate: null, // 下次开奖时间
         kjstatue: 0, // 是否正在开奖
+        status: 0, // 是否开始动图
         currentPage: 1,
         total: 0,
         tableData: []
@@ -374,6 +375,7 @@
         this.setTimer(dataJson.nextkjtime);
         this.nextkjtime = dataJson.nextkjtime;
         this.kjstatue = dataJson.kjstatue;
+        this.status = dataJson.status;
         this.nextkjdate = dataJson.nextkjdate;
         this.qs = dataJson.qs;
         this.years = dataJson.years;
