@@ -46,13 +46,58 @@
         </div>
       </div>
       <div class="kaijian-bg">
-        <img v-show="Number(status) === 1" src="./../assets/images/QIU.gif" alt="">
-        <img v-show="Number(status) !== 1" src="./../assets/images/QIU_static.gif" alt="">
+        <img v-show="Number(status) === 2" src="./../assets/images/QIU.gif" alt="">
+        <img v-show="Number(status) === 1 ||  Number(status) === 0" src="./../assets/images/QIU_static.gif" alt="">
       </div>
-      <ul class="ball-content flex-row center">
+      <ul v-show="Number(status) === 1" class="ball-content flex-row center">
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
-            <template v-if="hmData[0] || Number(status) === 1">
+            <img src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm3.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm5.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm6.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+        <li class="ball-add-item c_red">+</li>
+        <li class="ball-item">
+          <div class="flex flex-column center">
+            <img src="./../assets/images/hm7.gif" class="hm-img hm-img-pc" alt="">
+            <sheng-xiao class="first-text-t"></sheng-xiao>
+          </div>
+        </li>
+      </ul>
+      <ul v-show="Number(status) === 2 || Number(status) === 0" class="ball-content flex-row center">
+        <li class="ball-item flex-column">
+          <div class="flex flex-column center">
+            <template v-if="Number(status) === 2">
               <img v-if="hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
               <img v-show="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
