@@ -97,11 +97,11 @@
       <ul v-show="Number(status) === 2 || Number(status) === 0" class="ball-content flex-row center">
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
-            <template v-if="Number(status) === 2">
-              <img v-if="hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
-              <span v-if="hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
-              <sheng-xiao v-show="!hmData[0].sx" class="first-text-t"></sheng-xiao>
+            <template v-if="hmData[0] || Number(status) === 2 || Number(status) === 0">
+              <img v-if="hmData[0] && hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[0] || !hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
+              <span v-if="hmData[0] && hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
+              <sheng-xiao v-show="!hmData[0] || !hmData[0].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
