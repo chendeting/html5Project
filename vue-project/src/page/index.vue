@@ -46,79 +46,79 @@
         </div>
       </div>
       <div class="kaijian-bg">
-        <img v-if="Number(status) === 1" src="./../assets/images/QIU.gif" alt="">
-        <img v-if="Number(status) !== 1" src="./../assets/images/QIU_static.gif" alt="">
+        <img v-show="Number(status) === 1" src="./../assets/images/QIU.gif" alt="">
+        <img v-show="Number(status) !== 1" src="./../assets/images/QIU_static.gif" alt="">
       </div>
       <ul class="ball-content flex-row center">
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
-            <template v-if="hmData[0]">
+            <template v-if="hmData[0] || Number(status) === 1">
               <img v-if="hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
-              <sheng-xiao v-if="!hmData[0].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[0].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[1]">
+            <template v-if="hmData[1] && hmData[0] && hmData[0].hm">
               <img v-if="hmData[1].hm" :src="formatterImg(hmData[1].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[1].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[1].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[1].sx" class="first-text-t">{{hmData[1].sx}}</span>
-              <sheng-xiao v-if="!hmData[1].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[1].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[2]">
+            <template v-if="hmData[2] && hmData[1] && hmData[1].hm">
               <img v-if="hmData[2].hm" :src="formatterImg(hmData[2].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[2].hm" src="./../assets/images/hm3.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[2].hm" src="./../assets/images/hm3.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[2].sx" class="first-text-t">{{hmData[2].sx}}</span>
-              <sheng-xiao v-if="!hmData[2].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[2].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[3]">
+            <template v-if="hmData[3] && hmData[2] && hmData[2].hm">
               <img v-if="hmData[3].hm" :src="formatterImg(hmData[3].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[3].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[3].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[3].sx" class="first-text-t">{{hmData[3].sx}}</span>
-              <sheng-xiao v-if="!hmData[3].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[3].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[4]">
+            <template v-if="hmData[4] && hmData[3] && hmData[3].hm">
               <img v-if="hmData[4].hm" :src="formatterImg(hmData[4].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[4].hm" src="./../assets/images/hm5.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[4].hm" src="./../assets/images/hm5.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[4].sx" class="first-text-t">{{hmData[4].sx}}</span>
-              <sheng-xiao v-if="!hmData[4].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[4].sx" class="first-text-t"></sheng-xiao>
             </template>
 
           </div>
         </li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[5]">
+            <template v-if="hmData[5] && hmData[4] && hmData[4].hm">
               <img v-if="hmData[5].hm" :src="formatterImg(hmData[5].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[5].hm" src="./../assets/images/hm6.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[5].hm" src="./../assets/images/hm6.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[5].sx" class="first-text-t">{{hmData[5].sx}}</span>
-              <sheng-xiao v-if="!hmData[5].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[5].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
         <li class="ball-add-item c_red">+</li>
         <li class="ball-item">
           <div class="flex flex-column center">
-            <template v-if="hmData[6]">
+            <template v-if="hmData[6] && hmData[5] && hmData[5].hm">
               <img v-if="hmData[6].hm" :src="formatterImg(hmData[6].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-if="!hmData[6].hm" src="./../assets/images/hm7.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[6].hm" src="./../assets/images/hm7.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[6].sx" class="first-text-t">{{hmData[6].sx}}</span>
-              <sheng-xiao v-if="!hmData[6].sx" class="first-text-t"></sheng-xiao>
+              <sheng-xiao v-show="!hmData[6].sx" class="first-text-t"></sheng-xiao>
             </template>
           </div>
         </li>
