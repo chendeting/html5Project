@@ -32,7 +32,8 @@
           <span class="time-text">0</span>
         </template>
       </div>
-    </div><!--倒计时模块-->
+    </div>
+    <!--倒计时模块-->
     <div class="flex-column plr-3 mt-1">
       <div class="content-title flex-row justify-between align-center">
         <div class="ft_18 title-left c_red">葡京王牌六合彩</div>
@@ -49,6 +50,7 @@
         <img v-show="Number(status) === 2" src="./../assets/images/QIU.gif" alt="">
         <img v-show="Number(status) === 1 ||  Number(status) === 0" src="./../assets/images/QIU_static.gif" alt="">
       </div>
+      <!--倒计时为0，滚动-->
       <ul v-show="Number(status) === 1" class="ball-content flex-row center">
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
@@ -94,12 +96,13 @@
           </div>
         </li>
       </ul>
+      <!--开奖号码+滚动-->
       <ul v-show="Number(status) === 2 || Number(status) === 0" class="ball-content flex-row center">
         <li class="ball-item flex-column">
           <div class="flex flex-column center">
             <template v-if="hmData[0] || Number(status) === 2 || Number(status) === 0">
               <img v-if="hmData[0] && hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[0] || !hmData[0].hm" src="./../assets/images/hm2.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[0] || !hmData[0].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[0] && hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
               <sheng-xiao v-show="!hmData[0] || !hmData[0].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -109,7 +112,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[1] && hmData[0] && hmData[0].hm">
               <img v-if="hmData[1].hm" :src="formatterImg(hmData[1].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[1].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[1].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[1].sx" class="first-text-t">{{hmData[1].sx}}</span>
               <sheng-xiao v-show="!hmData[1].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -119,7 +122,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[2] && hmData[1] && hmData[1].hm">
               <img v-if="hmData[2].hm" :src="formatterImg(hmData[2].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[2].hm" src="./../assets/images/hm3.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[2].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[2].sx" class="first-text-t">{{hmData[2].sx}}</span>
               <sheng-xiao v-show="!hmData[2].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -129,7 +132,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[3] && hmData[2] && hmData[2].hm">
               <img v-if="hmData[3].hm" :src="formatterImg(hmData[3].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[3].hm" src="./../assets/images/hm4.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[3].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[3].sx" class="first-text-t">{{hmData[3].sx}}</span>
               <sheng-xiao v-show="!hmData[3].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -139,7 +142,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[4] && hmData[3] && hmData[3].hm">
               <img v-if="hmData[4].hm" :src="formatterImg(hmData[4].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[4].hm" src="./../assets/images/hm5.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[4].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[4].sx" class="first-text-t">{{hmData[4].sx}}</span>
               <sheng-xiao v-show="!hmData[4].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -150,7 +153,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[5] && hmData[4] && hmData[4].hm">
               <img v-if="hmData[5].hm" :src="formatterImg(hmData[5].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[5].hm" src="./../assets/images/hm6.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[5].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[5].sx" class="first-text-t">{{hmData[5].sx}}</span>
               <sheng-xiao v-show="!hmData[5].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -161,7 +164,7 @@
           <div class="flex flex-column center">
             <template v-if="hmData[6] && hmData[5] && hmData[5].hm">
               <img v-if="hmData[6].hm" :src="formatterImg(hmData[6].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[6].hm" src="./../assets/images/hm7.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[6].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
               <span v-if="hmData[6].sx" class="first-text-t">{{hmData[6].sx}}</span>
               <sheng-xiao v-show="!hmData[6].sx" class="first-text-t"></sheng-xiao>
             </template>
