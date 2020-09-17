@@ -9,7 +9,7 @@
           <span class="time-text">{{String(hour).slice(0, 1)}}</span>
           <span class="time-text" style="margin-right: 0">{{String(hour).slice(1)}}</span>
         </template>
-        <template v-if="hour === 0">
+        <template v-if="hour === 0 || !hour">
           <span class="time-text">0</span>
           <span class="time-text" style="margin-right: 0">0</span>
         </template>
@@ -18,16 +18,16 @@
           <span class="time-text">{{String(minute).slice(0, 1)}}</span>
           <span class="time-text" style="margin-right: 0">{{String(minute).slice(1)}}</span>
         </template>
-        <template v-if="minute === 0">
+        <template v-if="minute === 0 || !minute">
           <span class="time-text">0</span>
           <span class="time-text" style="margin-right: 0">0</span>
         </template>
         <div class="time-tips">:</div>
-        <template v-if="minute !== 0">
+        <template v-if="second !== 0">
           <span class="time-text">{{String(second).slice(0, 1)}}</span>
           <span class="time-text">{{String(second).slice(1)}}</span>
         </template>
-        <template v-if="minute === 0">
+        <template v-if="second === 0 || !second">
           <span class="time-text">0</span>
           <span class="time-text">0</span>
         </template>
@@ -282,7 +282,6 @@
         hmData: [],
         qs: null,
         years: '',
-        nextkjtime: 0, // 下次开奖时间
         nextkjdate: null, // 下次开奖时间
         kjstatue: 0, // 是否正在开奖
         status: 0, // 是否开始动图
@@ -294,7 +293,7 @@
     mounted() {
       this.initWebSocket();
       this.getDataLists()
-      // this.setTimer(12000)
+      this.setTimer(-12000)
       // this.tableData = [{
       //   years: '2020', qs: '080',
       //   kjdate: '2020-8-09',
@@ -337,7 +336,7 @@
         self.minute = 0;
         self.second = 0;
         window.clearInterval(self.timeInterval);
-        if (intDiff) {
+        if (intDiff && intDiff > 0) {
           self.timeInterval = window.setInterval(function () {
             if (intDiff > 0) {
               self.day = Math.floor(intDiff / (60 * 60 * 24));
@@ -357,13 +356,8 @@
             if (intDiff < 0) {
               window.clearInterval(self.timeInterval);
             }
+            console.log('candy--打印:intDiff', {intDiff: intDiff, day: this.day, hour: this.hour, minute: this.minute, second: this.second})
           }, 1000);
-        } else {
-          if (self.hour <= 9) {
-            self.hour = '0' + self.hour;
-          }
-          if (self.minute <= 9) self.minute = '0' + self.minute;
-          if (self.second <= 9) self.second = '0' + self.second;
         }
       },
       reconnect() {
@@ -420,8 +414,7 @@
         if (e.data === 'service_response_heart') return;
         let data = e.data ? JSON.parse(JSON.stringify(e.data)) : null
         let dataJson = JSON.parse(data)
-        this.setTimer(dataJson.nextkjtime);
-        this.nextkjtime = dataJson.nextkjtime;
+        this.setTimer(Number(dataJson.nextkjtime));
         this.kjstatue = dataJson.kjstatue;
         this.status = dataJson.status;
         this.nextkjdate = dataJson.nextkjdate;
