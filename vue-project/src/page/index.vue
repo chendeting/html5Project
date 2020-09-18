@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="newsContent plr-3">
-      <!--<carousel></carousel>-->
+      <carousel></carousel>
     </div>
     <div class="plr-3 mt-1">
       <div class="flex-row timer-box center">
