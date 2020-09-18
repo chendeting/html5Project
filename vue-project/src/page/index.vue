@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="newsContent plr-3">
-      <carousel></carousel>
+      <!--<carousel></carousel>-->
     </div>
     <div class="plr-3 mt-1">
       <div class="flex-row timer-box center">
@@ -102,7 +102,8 @@
           <div class="flex flex-column center">
             <template v-if="hmData[0] || Number(status) === 2 || Number(status) === 0">
               <img v-if="hmData[0] && hmData[0].hm" :src="formatterImg(hmData[0].hm)" class="hm-img hm-img-pc" alt="">
-              <img v-show="!hmData[0] || !hmData[0].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc" alt="">
+              <img v-show="!hmData[0] || !hmData[0].hm" src="./../assets/images/gundong.gif" class="hm-img hm-img-pc"
+                   alt="">
               <span v-if="hmData[0] && hmData[0].sx" class="first-text-t">{{hmData[0].sx}}</span>
               <sheng-xiao v-show="!hmData[0] || !hmData[0].sx" class="first-text-t"></sheng-xiao>
             </template>
@@ -293,7 +294,7 @@
     mounted() {
       this.initWebSocket();
       this.getDataLists()
-      this.setTimer(-12000)
+      // this.setTimer(12000)
       // this.tableData = [{
       //   years: '2020', qs: '080',
       //   kjdate: '2020-8-09',
@@ -331,34 +332,40 @@
       },
       setTimer(intDiff) {
         let self = this;
-        self.day = 0;
-        self.hour = 0;
-        self.minute = 0;
-        self.second = 0;
         window.clearInterval(self.timeInterval);
-        if (intDiff && intDiff > 0) {
-          self.timeInterval = window.setInterval(function () {
-            if (intDiff > 0) {
-              self.day = Math.floor(intDiff / (60 * 60 * 24));
-              self.hour = Math.floor(intDiff / (60 * 60)) - (self.day * 24);
-              self.minute = Math.floor(intDiff / 60) - (self.day * 24 * 60) - (self.hour * 60);
-              self.second = Math.floor(intDiff) - (self.day * 24 * 60 * 60) - (self.hour * 60 * 60) - (self.minute * 60);
-            }
+        self.timeInterval = window.setInterval(function () {
+          self.day = 0;
+          self.hour = 0;
+          self.minute = 0;
+          self.second = 0;
+          if (intDiff > 0) {
+            self.day = Math.floor(intDiff / (60 * 60 * 24));
+            self.hour = Math.floor(intDiff / (60 * 60)) - (self.day * 24);
+            self.minute = Math.floor(intDiff / 60) - (self.day * 24 * 60) - (self.hour * 60);
+            self.second = Math.floor(intDiff) - (self.day * 24 * 60 * 60) - (self.hour * 60 * 60) - (self.minute * 60);
+          } else {
+            return
+          }
 
-            if (self.minute <= 9) self.minute = '0' + self.minute;
-            if (self.second <= 9) self.second = '0' + self.second;
-            if (self.day > 0) {
-              self.hour = self.day * 24 + self.hour;
-            } else if (self.hour <= 9) {
-              self.hour = '0' + self.hour;
-            }
-            intDiff--;
-            if (intDiff < 0) {
-              window.clearInterval(self.timeInterval);
-            }
-            console.log('candy--打印:intDiff', {intDiff: intDiff, day: this.day, hour: this.hour, minute: this.minute, second: this.second})
-          }, 1000);
-        }
+          if (self.minute <= 9) self.minute = '0' + self.minute;
+          if (self.second <= 9) self.second = '0' + self.second;
+          if (self.day > 0) {
+            self.hour = self.day * 24 + self.hour;
+          } else if (self.hour <= 9) {
+            self.hour = '0' + self.hour;
+          }
+          intDiff--;
+          if (intDiff < 0) {
+            window.clearInterval(self.timeInterval);
+          }
+          console.log('candy--打印:intDiff', {
+            intDiff: intDiff,
+            day: self.day,
+            hour: self.hour,
+            minute: self.minute,
+            second: self.second
+          })
+        }, 1000);
       },
       reconnect() {
         let self = this
@@ -515,7 +522,7 @@
     padding: 0 .1rem;
   }
 
-  /deep/ .el-table th>.cell {
+  /deep/ .el-table th > .cell {
     text-align: center;
   }
 
