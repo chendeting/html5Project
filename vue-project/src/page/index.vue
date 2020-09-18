@@ -344,6 +344,7 @@
             self.minute = Math.floor(intDiff / 60) - (self.day * 24 * 60) - (self.hour * 60);
             self.second = Math.floor(intDiff) - (self.day * 24 * 60 * 60) - (self.hour * 60 * 60) - (self.minute * 60);
           } else {
+            window.clearInterval(self.timeInterval);
             return
           }
 
