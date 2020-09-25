@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="kaijian-bg">
+      <div v-if="false" class="kaijian-bg">
         <img v-show="Number(status) === 2" src="./../assets/images/QIU.gif" alt="">
         <img v-show="Number(status) === 1 ||  Number(status) === 0" src="./../assets/images/QIU_static.gif" alt="">
       </div>

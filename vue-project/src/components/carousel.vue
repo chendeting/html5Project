@@ -52,7 +52,7 @@
 
   .carousel ul {
     position: relative;
-    height: 5.33rem;
+    height: 4.3rem;
     overflow: hidden;
   }
 
@@ -67,7 +67,7 @@
 
   li img {
     width: 100%;
-    height: 5.33rem;
+    height: 4.3rem;
   }
 
   .image-enter-active {
