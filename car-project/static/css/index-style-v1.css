@@ -1,0 +1,617 @@
+.border-box {
+    box-sizing: border-box
+}
+
+.flex-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-column {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+
+.flex-no-shrink{
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.justify-content-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.justify-content-between {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.align-items-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.flex-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.page_wrapper {
+    background-color: #f5f5f5;
+    padding-bottom: .266667rem;
+}
+
+.top-download {
+    padding: 0 .4rem;
+    background-color: #2a8cff;
+    height: 1.813333rem;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #3d7ced, #1f4cf0);
+    background: linear-gradient(90deg, #3d7ced, #1f4cf0);
+}
+
+.top-download img.logo-icon {
+    display: inline-block;
+    width: 1.066667rem;
+    height: 1.066667rem
+}
+
+.top-download .download-desc {
+    display: inline-block;
+    margin-left: .266667rem;
+    font-size: .32rem
+}
+
+.top-download .download-desc .desc-title {
+    font-size: .48rem;
+    font-weight: 700
+}
+
+.top-download .download-btn {
+    width: 1.813333rem;
+    height: .666667rem;
+    text-align: center;
+    line-height: .666667rem;
+    background-color: #fff;
+    color: #1f4cf0;
+    border-radius: .666667rem;
+    font-size: .32rem
+}
+
+.time-line__item {
+    position: relative
+}
+
+.repair-history_description_bold {
+    font-weight: 700
+}
+
+.time-line__item:last-child .time-line__content {
+    border: none
+}
+
+.time-line__item:first-child .time-line__line {
+    top: .373333rem
+}
+
+.time-line__item:last-child .time-line__line {
+    bottom: calc(100% - .38667rem)
+}
+
+.time-line__line {
+    position: absolute;
+    display: block;
+    width: .026667rem;
+    top: 0;
+    bottom: 0;
+    left: .093333rem;
+    background-color: #ffd0cc
+}
+
+.time-line__content {
+    padding: 1px 0 .28rem;
+    margin-left: .453333rem;
+    font-size: .373333rem
+}
+
+.time-line__point {
+    position: relative;
+    line-height: .773333rem
+}
+
+.accident-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    font-weight: 700
+}
+
+.time-line__circle {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: -.44rem;
+    width: .16rem;
+    height: .16rem;
+    -webkit-transform: translateY(-60%);
+    transform: translateY(-60%);
+    border: .026667rem solid #fff;
+    border-radius: 50%;
+    background-color: #f43
+}
+
+.time-line__circle:before {
+    width: .08rem;
+    height: .08rem;
+    border-radius: 50%;
+    background-color: #fff
+}
+
+.time-line__circle:before, .wrench:before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.wrench:before {
+    width: .426667rem;
+    height: .426667rem;
+    background: url("./../images/chekuang_icon_weixiu@2x.png");
+    background-size: cover
+}
+
+.time-line__description {
+    padding: .133333rem .266667rem;
+    line-height: .506667rem;
+    background-color: #f5f5f5
+}
+
+.page_wrapper .page_in-app {
+    padding-bottom: 1.2rem
+}
+
+.share-page {
+    position: relative;
+}
+
+.warning-tips {
+    text-align: center;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .32rem;
+    color: #8c5616;
+    background-color: #ffe199
+}
+
+.bold, .repair-history_description_bold, .timeline-item-title {
+    font-weight: 700
+}
+
+.base-info {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: .53333rem .4rem .47872rem;
+    margin: .26667rem .4rem 0;
+    background-image: -webkit-linear-gradient(left, #333048, #1c1933);
+    background-image: linear-gradient(90deg, #333048, #1c1933);
+    border-radius: .21333rem .21333rem 0 0
+}
+
+.base-info__logo-wrapper {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 1.066667rem;
+    height: 1.066667rem;
+    border-radius: .21333rem;
+    overflow: hidden
+}
+
+.base-info__logo {
+    width: 100%
+}
+
+.base-info__infos-wrapper {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    margin-left: .266667rem
+}
+
+.base-info__title {
+    font-size: .426667rem;
+    font-weight: 700;
+    line-height: .586667rem
+}
+
+.base-info__title, .base-info__vin {
+    display: block;
+    color: #fff;
+    padding-bottom: .16rem
+}
+
+.base-info__vin {
+    font-size: .373333rem;
+    line-height: .533333rem
+}
+
+.base-info__engine {
+    display: block;
+    font-size: .32rem;
+    color: #fff;
+    line-height: .48rem;
+    padding-bottom: .18666rem
+}
+
+.base-info__report-create-time {
+    display: block;
+    font-size: .32rem;
+    color: #fff;
+    line-height: .533333rem
+}
+
+.base-info__detail-btn {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: .213333rem;
+    height: .373333rem;
+    padding: .4rem 0 .4rem .2rem
+}
+
+.report-profile {
+    box-sizing: border-box;
+    margin: 0 .4rem;
+    padding-bottom: .4rem;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 0 0 .21333rem .21333rem
+}
+
+.report-profile__header {
+    height: 1.28rem;
+    padding: 0 .4rem;
+    line-height: 1.28rem;
+    border-bottom: 1px solid #f0f0f0
+}
+
+.report-profile__rule-btn {
+    font-size: .32rem;
+    color: #333
+}
+
+.report-profile__level-wrapper {
+    height: 2.346667rem;
+    margin: .4rem;
+    justify-items: center;
+    box-sizing: border-box;
+    padding: 1.546667rem .266667rem .773333rem
+}
+
+.report-profile__level {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    height: .08rem;
+    background-color: #f5f5f5
+}
+
+.report-profile__level-item {
+    position: relative;
+    top: -.12rem;
+    width: .32rem;
+    height: .32rem;
+    background-color: #f5f5f5;
+    border-radius: 50%
+}
+
+.report-profile__level-item_active .report-profile__level-name {
+    top: -1.12rem;
+    font-size: .64rem;
+    color: #333;
+    font-weight: 700;
+    line-height: .8rem
+}
+
+.report-profile__level-item_active:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: .16rem;
+    top: .16rem;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 1.173333rem;
+    height: 1.173333rem;
+    background: url("./../images/carcondition_icon_grade@3x.png") no-repeat;
+    background-size: 100%;
+    z-index: 1
+}
+
+.report-profile__level-name {
+    position: absolute;
+    top: -.64rem;
+    left: .16rem;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: .32rem;
+    color: #ccc;
+    line-height: .48rem;
+    z-index: 0
+}
+
+.report-profile__units {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 .4rem;
+    box-sizing: border-box;
+    padding: .266667rem 0;
+    background-color: #f5f5f5
+}
+
+.report-profile__units-item {
+    position: relative;
+    width: 25%;
+    margin-top: .266667rem
+}
+
+.report-profile__units-item_exception:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    z-index: 0;
+    width: .8rem;
+    height: .32rem;
+    top: -.16rem;
+    right: .2rem;
+    background: url("./../images/carcondition_tips_abnormal@3x.png") no-repeat;
+    background-size: 100%;
+}
+
+.report-profile__units-icon-wrapper {
+    width: .853333rem;
+    height: .853333rem
+}
+
+.report-profile__units-icon {
+    width: 100%
+}
+
+.report-profile__units-name {
+    font-size: .32rem;
+    line-height: .746667rem
+}
+
+.accident-check, .involved-money, .maintenance-history, .mileage-record, .statement {
+    margin: .266667rem .4rem;
+    background-color: #fff;
+    border-radius: .21333rem
+}
+
+.accident-check__header {
+    box-sizing: border-box;
+    padding: 0 .4rem;
+    line-height: 1.28rem;
+    border-bottom: 1px solid #f0f0f0
+}
+
+.accident-check__header-title {
+    position: relative;
+    margin-left: .346667rem;
+    font-weight: 700;
+    font-size: .426667rem
+}
+
+.accident-check__header-title:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -.293333rem;
+    top: .4rem;
+    width: .08rem;
+    height: .48rem;
+    background-image: url("./../images/carcondition_pic_tittle@3x.png");
+    background-size: 100% 100%
+}
+
+.accident-check__rule-btn {
+    font-size: .32rem
+}
+
+.accident-check__point-image {
+    margin-bottom: -.266667rem
+}
+
+.accident-check__list {
+    box-sizing: border-box;
+    padding: .266667rem .4rem .213333rem
+}
+
+.accident-check__list-item {
+    line-height: .96rem
+}
+
+.accident-check__list-item-position {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    max-width: 3.066667rem
+}
+
+.accident-check__list-item-index {
+    display: inline-block;
+    width: .426667rem;
+    height: .426667rem;
+    border-radius: 50%;
+    background-color: #f43;
+    line-height: .426667rem;
+    text-align: center;
+    color: #fff;
+    font-size: .293333rem
+}
+
+.accident-check__list-item-name {
+    font-size: .373333rem;
+    margin-left: .106667rem
+}
+
+.accident-check__list-errors {
+    text-align: right;
+    color: #f43;
+    font-size: .373333rem;
+    line-height: .426667rem
+}
+
+.accident-check__empty {
+    box-sizing: border-box;
+    padding: .213333rem .426667rem .186667rem;
+    margin: 0;
+    font-size: .373333rem;
+    line-height: .693333rem;
+    word-break: break-all
+}
+
+.accident-check__time-line {
+    box-sizing: border-box;
+    padding: .133333rem .4rem 0
+}
+
+.repair-history__description_red {
+    color: #f43
+}
+
+.time-line__description {
+    word-break: break-word
+}
+
+.time-line__description > div {
+    margin-top: .133333rem
+}
+
+.repair-history {
+    background-color: #fff;
+    margin: .266667rem .4rem;
+    border-radius: .21333rem
+}
+
+.mileage-record__exception-info {
+    box-sizing: border-box;
+    padding: .4rem;
+}
+
+.mileage-record__exception-number {
+    display: inline-block;
+    padding: 0 .266667rem;
+    line-height: .64rem;
+    font-size: .32rem;
+    text-align: center;
+    background-color: #f43;
+    color: #fff;
+    border-radius: .053333rem
+}
+
+.mileage-record__exception-text {
+    margin-left: .266667rem;
+    font-size: .32rem
+}
+
+.ileage-record__table {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 .4rem .4rem;
+    border-spacing: 1px
+}
+
+.ileage-record__table > tbody, .ileage-record__table > thead {
+    line-height: .96rem;
+    font-size: .373333rem
+}
+
+.ileage-record__table > thead {
+    background-color: #e5e5e5
+}
+
+.ileage-record__table > tbody tr:nth-child(odd) {
+    background-color: #f5f5f5
+}
+
+.ileage-record__table > tbody tr:nth-child(2n) {
+    background-color: #f0f0f0
+}
+
+.ileage-record__table > thead th {
+    width: 50%;
+    padding: 0
+}
+
+.ileage-record__table > tbody th {
+    width: 50%;
+    padding: 0;
+    font-weight: 400
+}
+
+.ileage-record__table_error {
+    color: #f43
+}
+
+.ileage-record__table_error .ileage-record__table-error-icon {
+    display: inline-block
+}
+
+.ileage-record__table-error-icon {
+    display: none;
+    position: relative;
+    top: -.04rem;
+    width: .32rem;
+    margin-right: .106667rem
+}
+
+.report-profile__datas {
+    padding: .24rem .4rem .213333rem
+}
+
+.report-profile__data-item {
+    line-height: .693333rem;
+    font-size: .373333rem
+}
+
+.statement__text {
+    box-sizing: border-box;
+    padding: .24rem .4rem .213333rem;
+    line-height: .693333rem;
+    font-size: .373333rem
+}
+
