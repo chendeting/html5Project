@@ -4,17 +4,109 @@
  * @LastEditors: candy.d.chen
  * @LastEditTime: 2020/10/28 16:51
  */
-$(function () {
-  var _baseUrl = "http://www.chenji617425.top:8901/"
+(function (factory) {
+  if (typeof define === 'function' && (define.amd || define.cmd) && !jQuery) {
+    // AMD或CMD
+    define(['jquery'], factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node/CommonJS
+    module.exports = function (root, jQuery) {
+      if (jQuery === undefined) {
+        if (typeof window !== 'undefined') {
+          jQuery = require('jquery');
+        } else {
+          jQuery = require('jquery')(root);
+        }
+      }
+      factory(jQuery);
+      return jQuery;
+    };
+  } else {
+    //Browser globals
+    factory(jQuery);
+  }
+})(function () {
+  var _baseUrl = 'http://www.chenji617425.top:8901/';
+
+  function goToRulePage() {
+    window.location.href = './../page/rule.html';
+  }
+
+  template.defaults.imports.strFormat = function (data, keywordList) {
+    var _str = '';
+    if (data && data !== '' && data !== 'null' && data !== undefined) {
+      if ( keywordList && keywordList.length > 0) {
+        for (var i = 0; i < keywordList.length; i++) {
+          _str += setColor(data, keywordList[i].wenzi);
+        }
+      } else {
+        _str = data
+      }
+    }
+    return _str;
+  };
+
+  function setColor(data, keyword) {
+    var Reg = new RegExp(keyword, 'i');
+    var res = '';
+    if (data) {
+      res = data.replace(Reg, `<span style="color: red;">${keyword}</span>`);
+      return res;
+    }
+  }
+
   function getPageData() {
     $.ajax({
-      type: "get",
-      dataType: "json",
-      url: _baseUrl + "get?vin=WBA5A3100FD752296",
-      success: function (res) {
-        console.log('candy--打印:res', res);
+      type: 'get',
+      dataType: 'json',
+      url: _baseUrl + 'get?vin=WBA5A3100FD752296',
+      success: function (result) {
+        var _baseInfoHtml,
+          _reportProfileLevel,
+          _timeLineList,
+          _maintenanceHistory,
+          _mileageRecordTable,
+          _reportProfileData;
+        console.log('candy--打印:res', result);
+        if (result) {
+          _baseInfoHtml = template && template('base-info-template', {
+            TitleInfo: result.TitleInfo
+          }) || '';
+          _reportProfileLevel = template && template('report-profile-level-wrapper-template', {
+            importantPartsClass: result.importantPartsClass
+          }) || '';
+          _timeLineList = template && template('time-line-list-template', {
+            repairRecord: result.repairRecord,
+            redFlag: result.redFlag
+          }) || '';
+          _maintenanceHistory = template && template('maintenance-history-template', {
+            maintenancesRecord: result.maintenancesRecord
+          }) || '';
+          _mileageRecordTable = template && template('mileage-record-table-template', {
+            mileage: result.mileage
+          }) || '';
+          _reportProfileData = template && template('report-profile-data-template', {
+            carOwnerCherishment: result.carOwnerCherishment
+          }) || '';
+        }
+        _baseInfoHtml && $('.base-info').html(_baseInfoHtml);
+        _reportProfileLevel && $('.report-profile__level-wrapper').html(_reportProfileLevel);
+        _timeLineList && $('.time-line__list').html(_timeLineList);
+        _maintenanceHistory && $('.time-maintenance-history-list').html(_maintenanceHistory);
+        _reportProfileData && $('.report-profile__datas').html(_reportProfileData);
+        _mileageRecordTable && $('.mileage-record-table').html(_mileageRecordTable);
       }
     });
   }
+
   getPageData();
-})
+
+  $('.report-profile__rule-btn').on('click', function () {
+    goToRulePage();
+  });
+
+  $('.accident-check__rule-btn').on('click', function () {
+    goToRulePage();
+  });
+
+});
