@@ -101,6 +101,15 @@
 
   getPageData();
 
+  // $("html,body").animate({scrollTop: $("#box").offset().top}, 1000); 锚点跳转
+
+  $(".smooth").click(function(){
+    var href = $(this).attr("href");
+    var pos = $(href).offset().top;
+    $("html,body").animate({scrollTop: pos}, 1000);
+    return false;
+  });
+
   $('.report-profile__rule-btn').on('click', function () {
     goToRulePage();
   });
