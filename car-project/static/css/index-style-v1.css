@@ -618,7 +618,7 @@
     margin-right: .106667rem
 }
 
-.report-profile__datas {
+.report-profile__datas, .vehicle-profile-list {
     padding: .24rem .4rem .213333rem
 }
 
@@ -629,6 +629,10 @@
 
 .report-profile__data-label {
     padding-right: .22rem;
+}
+
+.report-profile__data-value-warning {
+    color: #ff780e;
 }
 
 .statement__text {

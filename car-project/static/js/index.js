@@ -46,6 +46,10 @@
     return _str;
   };
 
+  template.defaults.imports.warningClassFormat = function (num, str) {
+    return Number(num) < 5 ? str : '';
+  };
+
   function setColor(data, keyword) {
     var Reg = new RegExp(keyword, 'i');
     var res = '';
@@ -63,6 +67,7 @@
       success: function (result) {
         var _baseInfoHtml,
           _reportProfileLevel,
+          _vehicleProfileList,
           _timeLineList,
           _maintenanceHistory,
           _mileageRecordTable,
@@ -74,6 +79,9 @@
           }) || '';
           _reportProfileLevel = template && template('report-profile-level-wrapper-template', {
             importantPartsClass: result.importantPartsClass
+          }) || '';
+          _vehicleProfileList = template && template('vehicle-profile-list-template', {
+            carGeneral: result.carGeneral
           }) || '';
           _timeLineList = template && template('time-line-list-template', {
             repairRecord: result.repairRecord,
@@ -91,6 +99,7 @@
         }
         _baseInfoHtml && $('.base-info').html(_baseInfoHtml);
         _reportProfileLevel && $('.report-profile__level-wrapper').html(_reportProfileLevel);
+        _vehicleProfileList && $('.vehicle-profile-list').html(_vehicleProfileList);
         _timeLineList && $('.time-line__list').html(_timeLineList);
         _maintenanceHistory && $('.time-maintenance-history-list').html(_maintenanceHistory);
         _reportProfileData && $('.report-profile__datas').html(_reportProfileData);
