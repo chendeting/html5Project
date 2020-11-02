@@ -208,7 +208,7 @@ article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,sec
         rgba(207, 216, 220, 0.4),
         rgba(207, 216, 220, 0.2)
     );
-    background: #f2f2f2;
+    background: #c1bdbd;
     -webkit-animation: card-loading 1.4s ease infinite;
     animation: card-loading 1.4s ease infinite;
     background-size: 600% 600%;

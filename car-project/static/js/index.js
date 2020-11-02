@@ -68,6 +68,7 @@
         var _baseInfoHtml,
           _reportProfileLevel,
           _vehicleProfileList,
+          _reportProfileUnits,
           _timeLineList,
           _maintenanceHistory,
           _mileageRecordTable,
@@ -81,6 +82,9 @@
             importantPartsClass: result.importantPartsClass
           }) || '';
           _vehicleProfileList = template && template('vehicle-profile-list-template', {
+            carGeneral: result.carGeneral
+          }) || '';
+          _reportProfileUnits = template && template('report-profile-units-template', {
             carGeneral: result.carGeneral
           }) || '';
           _timeLineList = template && template('time-line-list-template', {
@@ -100,6 +104,7 @@
         _baseInfoHtml && $('.base-info').html(_baseInfoHtml);
         _reportProfileLevel && $('.report-profile__level-wrapper').html(_reportProfileLevel);
         _vehicleProfileList && $('.vehicle-profile-list').html(_vehicleProfileList);
+        _reportProfileUnits && $('.report-profile__units').html(_reportProfileUnits);
         _timeLineList && $('.time-line__list').html(_timeLineList);
         _maintenanceHistory && $('.time-maintenance-history-list').html(_maintenanceHistory);
         _reportProfileData && $('.report-profile__datas').html(_reportProfileData);

@@ -624,7 +624,8 @@
 
 .report-profile__data-item {
     line-height: .693333rem;
-    font-size: .373333rem
+    font-size: .373333rem;
+    margin-bottom: .2rem;
 }
 
 .report-profile__data-label {
