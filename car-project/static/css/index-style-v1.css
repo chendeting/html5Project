@@ -243,8 +243,9 @@
     box-sizing: border-box;
     padding: .53333rem .4rem .47872rem;
     margin: .26667rem .4rem 0;
-    background-image: -webkit-linear-gradient(left, #333048, #1c1933);
-    background-image: linear-gradient(90deg, #333048, #1c1933);
+    /*background-image: -webkit-linear-gradient(left, #333048, #1c1933);*/
+    /*background-image: linear-gradient(90deg, #333048, #1c1933);*/
+    background: #1aad19;
     border-radius: .21333rem .21333rem 0 0
 }
 
