@@ -43,7 +43,41 @@
         <div class="base-info__report-create-time"><p class="card-loading-block"></p></div>
       </div>
     </div>
-
+    <div class="report-profile" style="pointer-events: auto;">
+      <div class="flex-row justify-content-between align-items-center report-profile__header">
+        <span class="accident-check__header-title">车300综合车况评级</span>
+        <span class="report-profile__rule-btn">评级规则</span>
+      </div>
+      <div class="flex-row report-profile__level-wrapper">
+        <p class="w-100 card-loading-block"></p>
+      </div>
+      <div class="report-profile__units flex-row">
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+        <div class="flex-column flex-center report-profile__units-item">
+          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
+        </div>
+      </div>
+    </div>
     <div class="report-profile" style="pointer-events: auto;">
       <div class="flex-row justify-content-between align-items-center report-profile__header">
         <span class="accident-check__header-title">车辆概况</span>
@@ -79,43 +113,8 @@
         </div>
       </div>
     </div>
-    <div class="report-profile" style="pointer-events: auto;">
-      <div class="flex-row justify-content-between align-items-center report-profile__header">
-        <span class="accident-check__header-title">车300综合车况评级</span>
-        <span class="report-profile__rule-btn">评级规则</span>
-      </div>
-      <div class="flex-row report-profile__level-wrapper">
-        <p class="w-100 card-loading-block"></p>
-      </div>
-      <div class="report-profile__units flex-row">
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-        <div class="flex-column flex-center report-profile__units-item">
-          <p class="report-profile__units-icon-wrapper card-loading-block"></p>
-        </div>
-      </div>
-    </div> <!----> <!---->
-    <div class="repair-history" style="pointer-events: auto;">
-      <div class="flex-row justify-content-between accident-check__header"><span class="accident-check__header-title">一般维修历史</span>
+    <div id="repair-history-href" class="repair-history" style="pointer-events: auto;display: none;">
+      <div class="flex-row justify-content-between accident-check__header"><span class="accident-check__header-title">维修历史</span>
         <span class="accident-check__rule-btn">规则说明</span>
       </div>
       <ul class="accident-check__list">
@@ -207,7 +206,7 @@
         </div>
       </div>
     </div>
-    <div id="scoreCarOutside" class="maintenance-history" style="pointer-events: auto;">
+    <div class="maintenance-history" style="pointer-events: auto;">
       <div class="flex-row justify-content-between accident-check__header"><span class="accident-check__header-title">保养历史</span>
         <span class="accident-check__rule-btn">规则说明</span></div>
       <div class="accident-check__time-line">
@@ -277,13 +276,7 @@
     <div class="mileage-record" style="pointer-events: auto;">
       <div class="flex-row justify-content-between accident-check__header"><span class="accident-check__header-title">里程记录分析</span>
         <span class="accident-check__rule-btn">规则说明</span></div>
-      <div class="flex-row align-items-center mileage-record__exception-info"><span
-        class="mileage-record__exception-number">1项异常</span> <span
-        class="mileage-record__exception-text">
-                        该车里程读数异常，存在<span class="repair-history__description_red">疑似调表</span>现象
-                    </span>
-      </div>
-      <div class="mileage-record-table">
+      <div id="scoreCarMileage" class="mileage-record-table">
         <table class="ileage-record__table">
           <thead>
           <tr>
@@ -369,19 +362,19 @@
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_a@3x.png"
            class="report-profile__units-icon"></div>
-    <a href="#proTest" class="report-profile__units-name">碰撞排查</a></div>
+    <a href="#{{@carGeneral.scoreCarWater | warningClassFormat 'repair-history-href'}}" class="report-profile__units-name">碰撞排查</a></div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarWater | warningClassFormat 'report-profile__units-item_exception'}}">
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_c@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarWater | warningClassFormat 'scoreCarWater'}}"
+    <a href="#{{@carGeneral.scoreCarWater | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">泡水排查</a>
   </div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarFire | warningClassFormat 'report-profile__units-item_exception'}}">
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_b@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarFire | warningClassFormat 'scoreCarFire'}}"
+    <a href="#{{@carGeneral.scoreCarFire | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">火烧排查</a>
   </div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarMileage | warningClassFormat 'report-profile__units-item_exception'}}">
@@ -395,28 +388,28 @@
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_d@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarOutside | warningClassFormat 'scoreCarOutside'}}"
+    <a href="#{{@carGeneral.scoreCarOutside | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">外观部件</a>
   </div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'report-profile__units-item_exception'}}">
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_g@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'scoreCarEngineAndGearbox'}}"
+    <a href="#{{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">变速箱</a>
   </div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'report-profile__units-item_exception'}}">
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_f@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'scoreCarEngineAndGearbox'}}"
+    <a href="#{{@carGeneral.scoreCarEngineAndGearbox | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">发动机</a>
   </div>
   <div class="flex-column flex-center report-profile__units-item {{@carGeneral.scoreCarAirBag | warningClassFormat 'report-profile__units-item_exception'}}">
     <div class="report-profile__units-icon-wrapper">
       <img src="./../static/images/maint_report_icon_e@3x.png"
       class="report-profile__units-icon"></div>
-    <a href="#{{@carGeneral.scoreCarAirBag | warningClassFormat 'scoreCarAirBag'}}"
+    <a href="#{{@carGeneral.scoreCarAirBag | warningClassFormat 'repair-history-href'}}"
        class="report-profile__units-name">安全气囊</a>
   </div>
   {{/if}}
@@ -501,11 +494,12 @@
       <p class="time-line__description">
       <div>
         <span class="repair-history_description_bold">项目：</span>
-        {{value.material ? value.material : ''}}
-      </div>
+        {{@value.repairType | strFormat redFlag}}
+        {{@value.description | strFormat redFlag}}
+    </div>
       <div>
         <span class="repair-history_description_bold">材料：</span>
-        {{@value.description | strFormat redFlag}}
+        {{@value.material | strFormat redFlag}}
       </div>
       </p>
     </div>
@@ -525,10 +519,11 @@
         </div>
       </div>
       <p class="time-line__description"><span class="timeline-item-title">项目：</span>
-        {{value.material ? value.material : ''}}
+        {{value.repairType | strFormat redFlag}}
+        {{@value.description | strFormat redFlag}}
       <div>
         <span class="timeline-item-title">材料：</span>
-        {{@value.description | strFormat redFlag}}
+        {{@value.material | strFormat redFlag}}
       </div>
       </p></div>
   </li>
@@ -538,25 +533,33 @@
 <!--里程记录分析-->
 <script id="mileage-record-table-template" type="text/html">
   {{if mileage && mileage.mileageInfo && mileage.mileageInfo.length > 0}}
-  <table class="ileage-record__table">
-    <thead>
-    <tr>
-      <th>时间</th>
-      <th>里程（公里）</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{each mileage.mileageInfo value i}}
-    <tr class="{{value.status === '异常数据' ? 'ileage-record__table_error' : ''}}">
-      <td>
-        <img src="./../static/images/carcondition_icon_status@3x.png" class="ileage-record__table-error-icon">
-        {{value.date}}
-      </td>
-      <td>{{value.mile}}</td>
-    </tr>
-    {{/each}}
-    </tbody>
-  </table>
+    {{if mileage.errorMileageTimes > 0}}
+    <div class="flex-row align-items-center mileage-record__exception-info"><span
+      class="mileage-record__exception-number">{{mileage.errorMileageTimes}}项异常</span> <span
+      class="mileage-record__exception-text">
+                          该车里程读数异常，存在<span class="repair-history__description_red">疑似调表</span>现象
+                      </span>
+    </div>
+    {{/if}}
+    <table class="ileage-record__table">
+      <thead>
+      <tr>
+        <th>时间</th>
+        <th>里程（公里）</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{each mileage.mileageInfo value i}}
+      <tr class="{{value.status === '异常数据' ? 'ileage-record__table_error' : ''}}">
+        <td>
+          <img src="./../static/images/carcondition_icon_status@3x.png" class="ileage-record__table-error-icon">
+          {{value.date}}
+        </td>
+        <td>{{value.mile}}</td>
+      </tr>
+      {{/each}}
+      </tbody>
+    </table>
   {{/if}}
 </script>
 <!--车主爱惜分析-->
