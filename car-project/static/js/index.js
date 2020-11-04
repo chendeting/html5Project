@@ -26,6 +26,40 @@
     factory(jQuery);
   }
 })(function () {
+
+  $.extend({
+    /**
+     * @return {string}
+     */
+    Request: function (m) {
+      var sValue = location.search.match(
+        new RegExp('[?&]' + m + '=([^&]*)(&?)', 'i')
+      );
+      return sValue
+        ? decodeURIComponent(sValue[1])
+        : decodeURIComponent(sValue);
+    },
+    UrlUpdateParams: function (url, name, value) {
+      var r = url;
+      if (r != null && r !== 'undefined' && r !== '') {
+        value = encodeURIComponent(value);
+        var reg = new RegExp('(^|)' + name + '=([^&]*)(|$)');
+        var tmp = name + '=' + value;
+        if (url.match(reg) != null) {
+          r = url.replace(eval(reg), tmp);
+        } else {
+          if (url.match('[?]')) {
+            r = url + '&' + tmp;
+          } else {
+            r = url + '?' + tmp;
+          }
+        }
+      }
+      return r;
+    }
+  });
+
+  var _vin = $.Request('vin');
   var _baseUrl = 'http://www.chenji617425.top:8901/';
 
   function goToRulePage() {
@@ -35,12 +69,12 @@
   template.defaults.imports.strFormat = function (data, keywordList) {
     var _str = '';
     if (data && data !== '' && data !== 'null' && data !== undefined) {
-      if ( keywordList && keywordList.length > 0) {
+      if (keywordList && keywordList.length > 0) {
         for (var i = 0; i < keywordList.length; i++) {
           _str += setColor(data, keywordList[i].wenzi);
         }
       } else {
-        _str = data
+        _str = data;
       }
     }
     return _str;
@@ -63,13 +97,13 @@
     $.ajax({
       type: 'get',
       dataType: 'json',
-      url: _baseUrl + 'get?vin=WBA5A3100FD752296',
+      url: _baseUrl + 'get?vin=' + _vin,
       success: function (result) {
         var _baseInfoHtml,
           _reportProfileLevel,
           _vehicleProfileList,
           _reportProfileUnits,
-          _timeLineList,
+          _repairRecordList,
           _maintenanceHistory,
           _mileageRecordTable,
           _reportProfileData;
@@ -87,7 +121,7 @@
           _reportProfileUnits = template && template('report-profile-units-template', {
             carGeneral: result.carGeneral
           }) || '';
-          _timeLineList = template && template('time-line-list-template', {
+          _repairRecordList = template && template('time-line-list-template', {
             repairRecord: result.repairRecord,
             redFlag: result.redFlag
           }) || '';
@@ -105,8 +139,8 @@
         _reportProfileLevel && $('.report-profile__level-wrapper').html(_reportProfileLevel);
         _vehicleProfileList && $('.vehicle-profile-list').html(_vehicleProfileList);
         _reportProfileUnits && $('.report-profile__units').html(_reportProfileUnits);
-        _timeLineList && $('.time-line__list').html(_timeLineList);
-        _maintenanceHistory && $('.time-maintenance-history-list').html(_maintenanceHistory);
+        _repairRecordList && $('.repair-record-list').html(_repairRecordList);
+        _maintenanceHistory && $('.maintenance-history-list').html(_maintenanceHistory);
         _reportProfileData && $('.report-profile__datas').html(_reportProfileData);
         _mileageRecordTable && $('.mileage-record-table').html(_mileageRecordTable);
       }
@@ -117,10 +151,10 @@
 
   // $("html,body").animate({scrollTop: $("#box").offset().top}, 1000); 锚点跳转
 
-  $(".smooth").click(function(){
-    var href = $(this).attr("href");
+  $('.smooth').click(function () {
+    var href = $(this).attr('href');
     var pos = $(href).offset().top;
-    $("html,body").animate({scrollTop: pos}, 1000);
+    $('html,body').animate({scrollTop: pos}, 1000);
     return false;
   });
 
