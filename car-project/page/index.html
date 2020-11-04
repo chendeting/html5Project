@@ -113,11 +113,11 @@
         </div>
       </div>
     </div>
-    <div id="repair-history-href" class="repair-history" style="pointer-events: auto;display: none;">
+    <div id="repair-history-href" class="repair-history" style="pointer-events: auto;">
       <div class="flex-row justify-content-between accident-check__header"><span class="accident-check__header-title">维修历史</span>
         <span class="accident-check__rule-btn">规则说明</span>
       </div>
-      <ul class="accident-check__list">
+      <ul class="accident-check__list" style="display: none;">
         <li class="flex-row align-items-center justify-content-between accident-check__list-item">
           <div class="flex-row align-items-center accident-check__list-item-position"><span
             class="accident-check__list-item-index">1</span> <span
@@ -268,7 +268,6 @@
                 </div>
               </div>
             </li>
-
           </ul>
         </div>
       </div>
@@ -481,51 +480,53 @@
 <!-- 维修记录 -->
 <script id="time-line-list-template" type="text/html">
   {{if repairRecord && repairRecord.length > 0}}
-  {{each repairRecord value i}}
-  <li class="time-line__item">
-    <span class="time-line__line"></span>
-    <div class="time-line__content">
-      <div class="time-line__point">
-        <span class="time-line__circle"></span>
-        <div class="accident-info">
-          <span>{{value.date}}</span> <span>{{value.repairmileage}}公里</span>
+    {{each repairRecord value i}}
+    <li class="time-line__item">
+      <div class="time-line__line"></div>
+      <div class="time-line__content">
+        <div class="time-line__point">
+          <span class="time-line__circle"></span>
+          <div class="accident-info">
+            <span>{{value.date}}</span> <span>{{value.repairmileage}}公里</span>
+          </div>
+        </div>
+        <div class="time-line__description">
+        <div>
+          <span class="repair-history_description_bold">项目：</span>
+          {{@value.repairType | strFormat redFlag}}
+          {{@value.description | strFormat redFlag}}
+        </div>
+        <div>
+          <span class="repair-history_description_bold">材料：</span>
+          {{@value.material | strFormat redFlag}}
+        </div>
         </div>
       </div>
-      <p class="time-line__description">
-      <div>
-        <span class="repair-history_description_bold">项目：</span>
-        {{@value.repairType | strFormat redFlag}}
-        {{@value.description | strFormat redFlag}}
-    </div>
-      <div>
-        <span class="repair-history_description_bold">材料：</span>
-        {{@value.material | strFormat redFlag}}
-      </div>
-      </p>
-    </div>
-  </li>
-  {{/each}}
+    </li>
+    {{/each}}
   {{/if}}
 </script>
 <!--保养记录 -->
 <script id="maintenance-history-template" type="text/html">
   {{if maintenancesRecord && maintenancesRecord.length > 0}}
   {{each maintenancesRecord value i}}
-  <li class="time-line__item"><span class="time-line__line"></span>
+  <li class="time-line__item">
+    <div class="time-line__line"></div>
     <div class="time-line__content">
       <div class="time-line__point"><span class="time-line__circle"></span>
         <div class="accident-info">
           <span>{{value.date}}</span> <span>{{value.repairmileage}}公里</span>
         </div>
       </div>
-      <p class="time-line__description"><span class="timeline-item-title">项目：</span>
-        {{value.repairType | strFormat redFlag}}
+      <div class="time-line__description"><span class="timeline-item-title">项目：</span>
+        {{@value.repairType | strFormat redFlag}}
         {{@value.description | strFormat redFlag}}
       <div>
         <span class="timeline-item-title">材料：</span>
         {{@value.material | strFormat redFlag}}
       </div>
-      </p></div>
+      </div>
+    </div>
   </li>
   {{/each}}
   {{/if}}

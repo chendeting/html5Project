@@ -71,7 +71,7 @@
     if (data && data !== '' && data !== 'null' && data !== undefined) {
       if (keywordList && keywordList.length > 0) {
         for (var i = 0; i < keywordList.length; i++) {
-          _str += setColor(data, keywordList[i].wenzi);
+          _str = setColor(data, keywordList[i].wenzi);
         }
       } else {
         _str = data;
@@ -126,7 +126,8 @@
             redFlag: result.redFlag
           }) || '';
           _maintenanceHistory = template && template('maintenance-history-template', {
-            maintenancesRecord: result.maintenancesRecord
+            maintenancesRecord: result.maintenancesRecord,
+            redFlag: result.redFlag
           }) || '';
           _mileageRecordTable = template && template('mileage-record-table-template', {
             mileage: result.mileage
