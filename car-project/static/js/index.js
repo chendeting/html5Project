@@ -62,6 +62,27 @@
   var _vin = $.Request('vin');
   var _baseUrl = 'http://www.chenji617425.top:8901/';
 
+  function downApp() {
+    var u = navigator.userAgent,
+      isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
+      isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+      urls = {
+        'android': 'http://www.chenji617425.top:8888:/myworks/carandroid.apk',
+        'ios': 'http://www.chenji617425.top:8888:/myworks/carios.apk',
+        'other': 'http://weixin.qq.com/d'
+      };
+    //三元运算
+    window.location.href = isAndroid ? urls.android : isiOS ? urls.ios : urls.other;
+    // //简化
+    // if (isAndroid) {
+    //   window.location.href = urls.android;
+    // } else if (isiOS) {
+    //   window.location.href = urls.ios;
+    // } else {
+    //   window.location.href = urls.other;
+    // }
+  }
+
   function goToRulePage() {
     window.location.href = './../page/rule.html';
   }
@@ -107,7 +128,7 @@
           _maintenanceHistory,
           _mileageRecordTable,
           _reportProfileData;
-        console.log('candy--打印:res', result);
+        // console.log('candy--打印:res', result);
         if (result) {
           _baseInfoHtml = template && template('base-info-template', {
             TitleInfo: result.TitleInfo
@@ -151,6 +172,10 @@
   getPageData();
 
   // $("html,body").animate({scrollTop: $("#box").offset().top}, 1000); 锚点跳转
+
+  $('.download-btn').on('click', function () {
+    downApp();
+  });
 
   $('.smooth').click(function () {
     var href = $(this).attr('href');
